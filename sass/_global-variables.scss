@@ -1,0 +1,66 @@
+$stageWidth: 1920px;
+$stageHeight: 1080px;
+$translationUIHeight: 45px;
+
+$easing: cubic-bezier(.215, .61, .355, 1);
+$easeOut: cubic-bezier(0, 0, 0.58, 1);
+
+// font weights
+$book: 400;
+$medium: 500;
+$semibold: 600;
+
+@font-face {
+	font-family: 'Whitney';
+	src: url('../fonts/WhitneyBook.otf') format('opentype');
+	font-weight: $book;
+}
+@font-face {
+	font-family: 'Whitney';
+	src: url('../fonts/WhitneyMedium.otf') format('opentype');
+	font-weight: $medium;
+}
+@font-face {
+	font-family: 'Whitney';
+	src: url('../fonts/WhitneySemibold.otf') format('opentype');
+	font-weight: $semibold;
+}
+@font-face {
+	font-family: 'Whitney Narrow';
+	src: url('../fonts/WhitneyNarrowBook.otf') format('opentype');
+	font-weight: $book;
+}
+@font-face {
+	font-family: 'Whitney Narrow';
+	src: url('../fonts/WhitneyNarrowSemibold.otf') format('opentype');
+	font-weight: $semibold;
+}
+@font-face {
+	font-family: 'Whitney Condensed';
+	src: url('../fonts/WhitneyCondensedMedium.otf') format('opentype');
+	font-weight: $medium;
+}
+@font-face {
+	font-family: 'Whitney Condensed';
+	src: url('../fonts/WhitneyCondensedSemibold.otf') format('opentype');
+	font-weight: $semibold;
+}
+@font-face {
+	font-family: 'HanSans';
+	src: url('../fonts/HanSansNormal.otf') format('opentype');
+	font-weight: $book;
+}
+@font-face {
+	font-family: 'HanSans';
+	src: url('../fonts/HanSansMedium.otf') format('opentype');
+	font-weight: $medium;
+}
+@font-face {
+	font-family: 'HanSans';
+	src: url('../fonts/HanSansBold.otf') format('opentype');
+	font-weight: $semibold;
+}
+
+@import "_colors";
+@import "_mixins";
+@import "_animations";

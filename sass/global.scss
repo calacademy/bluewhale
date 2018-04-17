@@ -1,0 +1,195 @@
+@import "global-variables";
+@import "compass/reset";
+@import "compass/css3/opacity";
+@import "compass/css3/user-interface";
+@import "compass/css3/animation";
+
+// disable user select
+.touch {
+	* {
+		cursor: none;
+		-webkit-touch-callout: none;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		@include user-select(none);
+	}
+}
+
+html {
+	height: 100%;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+body {
+	// curly quotes
+	-webkit-font-feature-settings: 'ss17' 1;
+	font-feature-settings: 'ss17' 1;
+
+	#preload {
+		position: absolute;
+		left: -9999999px;
+
+		.medium {
+			font-weight: $medium;
+		}
+		.semibold {
+			font-weight: $semibold;
+		}
+	}
+
+	&, * {
+		font-family: 'Whitney', Helvetica, Arial, sans-serif;
+		outline: none;
+	}
+
+	#preload div,
+	.cn,
+	.cn * {
+		font-family: 'HanSans', Helvetica, Arial, sans-serif;
+	}
+
+	i,
+	em {
+		font-style: italic;
+	}
+
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	font-weight: $book;
+	background-color: $bgGrey;
+	color: #ffffff;
+
+	#root {
+		position: relative;
+		background-color: #000000;
+		
+		@include box-sizing(border-box);
+		width: $stageWidth;
+		height: $stageHeight;
+		overflow: hidden;
+		margin-left: auto;
+		margin-right: auto;
+
+		#languages {
+		    background-color: #000000;
+		    width: 100%;
+		    overflow: hidden;
+		    clear: both;
+
+		    li {
+		    	@include box-sizing(border-box);
+		    	@include buttony;
+
+		    	float: right;
+		    	height: $translationUIHeight;
+		    	border-left: 1px solid #ffffff;
+
+		    	font-size: 17px;
+			    line-height: 1;
+			    letter-spacing: 1.25px;
+			    text-transform: uppercase;
+			    padding-left: 60px;
+			    padding-right: 60px;
+			    padding-top: 14px;
+
+			    color: $blue;
+			    font-weight: $medium;
+			    font-family: 'Whitney Condensed';
+
+		    	&#cn {
+		    		font-family: 'HanSans';
+		    	}
+
+		    	&.active {
+					font-weight: $semibold;
+        			color: #ffffff;
+        			pointer-events: none;
+		    	}
+		    }
+		}
+
+		#close {
+			@include box-sizing(border-box);
+
+			z-index: 9999999;
+			position: absolute;
+			
+			text-indent: -999px;
+			overflow: hidden;
+
+			$dim: 62px;
+			$left: 50px;
+			$top: 30px;
+
+			width: $dim + ($left * 2);
+			height: $dim + ($top * 2);
+
+			background-color: transparent;
+			border: none;
+
+			background-image: url('../images/icons/close-white.svg');
+			background-repeat: no-repeat;
+			background-position: $left $top;
+			@include background-size($dim $dim);
+
+			@include opacity(0);
+			@include buttony;
+		}
+	}
+
+	// loading
+	#loading {
+		position: absolute;
+		display: table;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+
+		h1 {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 60px;
+			font-weight: $book;
+			color: #ffffff;
+			padding-bottom: 30px;
+		}
+	}
+
+	#root {
+		display: none;
+	}
+
+	.loaded & {
+		#loading {
+			display: none;
+		}
+
+		#root {
+			display: block;
+		}
+	}
+
+	// translate
+	.en, .cn, .tl, .es {
+		display: none !important;
+		@include animation(fade-in 1s $easing);
+	}
+
+	@mixin lg($lg) {
+		html[lang="#{$lg}"] & {
+			.#{$lg} {
+				display: block !important;
+			}
+		}
+	}
+
+	@include lg('en');
+	@include lg('cn');
+	@include lg('tl');
+	@include lg('es');
+}

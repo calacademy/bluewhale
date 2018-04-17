@@ -1,0 +1,18 @@
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/css3/user-interface";
+
+@mixin small-caps {
+	text-transform: lowercase;
+	font-variant: small-caps;
+}
+
+@mixin buttony {
+	cursor: hand;
+	cursor: pointer;
+
+	&.highlight,
+	.no-touch &:hover {
+		@include opacity(0.7);
+	}
+}
