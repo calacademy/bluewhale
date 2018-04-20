@@ -16,3 +16,32 @@
 		@include opacity(0.7);
 	}
 }
+
+@mixin head($multiLine: false) {
+	font-family: 'Whitney Narrow';
+	font-size: 45px;
+	line-height: 1;
+
+	@if $multiLine {
+		line-height: 50px;
+	}
+}
+
+@mixin megahead($multiLine: false) {
+	font-family: 'Whitney Narrow';
+	font-size: 60px;
+	line-height: 1;
+
+	@if $multiLine {
+		line-height: 68px;
+	}
+}
+
+@mixin subhead($multiLine: false) {
+	font-size: 30px;
+	line-height: 1;
+
+	@if $multiLine {
+		line-height: 36px;
+	}
+}

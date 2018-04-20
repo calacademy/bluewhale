@@ -42,6 +42,13 @@ body {
 		outline: none;
 	}
 
+	button {
+		cursor: pointer;
+		border: 0;
+		background-color: transparent;
+		@include appearance(none);
+	}
+
 	#preload div,
 	.cn,
 	.cn * {
@@ -72,6 +79,9 @@ body {
 		margin-right: auto;
 
 		#languages {
+		    z-index: 999;
+		    position: relative;
+
 		    background-color: #000000;
 		    width: 100%;
 		    overflow: hidden;
@@ -132,9 +142,374 @@ body {
 			background-repeat: no-repeat;
 			background-position: $left $top;
 			@include background-size($dim $dim);
-
-			@include opacity(0);
+			
 			@include buttony;
+			@include opacity(0);
+			pointer-events: none;
+
+			.show-close & {
+				@include transition(
+					opacity .4s $easing
+				);
+
+				@include opacity(1);
+				pointer-events: all;
+			}
+		}
+
+		nav {
+			position: relative;
+			z-index: 3;
+		}
+
+		section {
+			z-index: 2;
+			display: none;
+			position: relative;
+
+			&.open {
+				display: block;
+			}
+
+			h1 {
+				@include head;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				@include text-shadow(rgba(#000000, 0.5) 0 0 20px);
+			}
+
+			&#media-overlay {
+				z-index: 4;
+
+				position: absolute;
+				top: $translationUIHeight;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #ffffff;
+
+				video {
+					z-index: 1;
+					@include animation(fade-in 2s $easing);
+					width: $stageWidth;
+					height: $stageHeight;
+				}
+
+				.progress-indicator {
+					z-index: 2;
+					position: absolute;
+					@include transition-delay(1s);
+					@include filter(drop-shadow(0 0 5px rgba(#000000, 0.4)));
+					
+					top: 20px;
+					right: 20px;
+
+					svg {
+						@include transform(rotate(-90deg));
+
+						width: 50px;
+						height: 50px;
+
+						circle {
+							fill: none;
+
+							&.progress {
+								stroke: #ffffff;
+								stroke-width: 6;
+							}
+							&.bg {
+								stroke: #000000;
+								stroke-width: 2;
+							}
+						}
+					}
+				}
+			}
+
+			&#slideshow {
+				$slideWidth: 650px;
+
+				width: $slideWidth * 5;
+
+				h1,
+				.bx-controls > div {
+					width: $stageWidth;
+				}
+
+				h1 {
+					text-align: center;
+				}
+
+				.slides {
+					$padding: 60px;
+
+					width: $slideWidth * 5;
+					margin-left: ($stageWidth - ($slideWidth * 5)) / 2;
+
+					& > li {
+						@include box-sizing(border-box);
+						padding: $padding;
+
+						img {
+							$dim: $slideWidth - ($padding * 2);
+							@include border-radius($dim / 2);
+							width: $dim;
+							height: $dim;
+							margin-bottom: $padding;
+						}
+
+						p {
+							font-weight: $semibold;
+							font-size: 2em;
+						}
+					}
+					.mid-slide {
+						background-color: rgba(#000000, 0.6);
+					}
+				}
+
+				.bx-wrapper {
+					.bx-pager {
+						pointer-events: none;
+						z-index: 2;
+
+						div {
+							a {
+								@include box-shadow(none);
+								background: rgba(#ffffff, 0.25);
+
+								&.active {
+									background: rgba(#ffffff, 0.75);								
+								}
+							}
+						}
+					}
+
+					.bx-controls-direction {
+						@include box-sizing(border-box);
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						z-index: 1;
+						pointer-events: none;
+
+						$iconDim: 44px;
+
+						a {
+							background: transparent;
+							@include buttony;
+							pointer-events: all;
+
+							margin: 0;
+							padding: 0;
+							display: block;
+							top: 0;
+
+							width: 100px;
+							height: 100px;
+							background-repeat: no-repeat;
+							@include background-size($iconDim $iconDim);
+
+							&.bx-prev {
+								float: left;
+								left: 0;
+								background-image: url('../images/icons/previous-white.svg');
+								background-position: center left;
+							}
+							&.bx-next {
+								float: right;
+								right: 0;
+								background-image: url('../images/icons/next-white.svg');
+								background-position: center right;
+							}	
+						}
+					}
+				}
+			}
+
+			&#whale {
+				width: $stageHeight;
+				height: $stageHeight - $translationUIHeight;
+
+				top: $translationUIHeight;
+				left: 0;
+				position: absolute;
+
+				$padding: 60px;
+
+				h1 {
+					@include megahead;
+					margin-left: $padding;	
+				}
+
+				.nav {
+					position: absolute;
+					left: $padding;
+					bottom: $padding * 2;
+
+					color: #ffffff;
+					font-size: 24px;
+					border: 2px solid #ffffff;
+					padding: 10px;
+					text-align: left;
+
+					.copy {
+						padding-right: $padding;
+					}
+
+					.point {
+						margin-right: 10px;
+						margin-top: 5px;
+					}
+
+					& > div {
+						float: left;
+					}
+				}
+
+				.nav,
+				#points > div {
+					cursor: pointer;
+				}
+
+				.nav div.point,
+				#points > div {
+					display: block;
+
+					&, div {
+						@include box-sizing(border-box);
+						position: relative;
+					}
+
+					$dim: 40px;
+
+					width: $dim;
+					height: $dim;
+					overflow: hidden;
+					text-indent: -99999px;
+					@include border-radius($dim / 2);
+					border: 3px solid #ffffff;
+
+					background-color: transparent;
+
+					padding: 2px;
+
+					div {
+						$lilDim: $dim - 10px;
+
+						padding: 0;
+						width: $lilDim;
+						height: $lilDim;
+						@include border-radius($lilDim / 2);
+
+						border: 2px solid #ffffff;
+
+						@include transition(
+							transform .3s $easing,
+							background-color .5s $easing
+						);
+
+						@include transform(scale3d(.6, .6, .6));
+						background-color: #ffffff;
+					}
+
+					&.selected {
+						div {
+							@include transform(scale3d(1, 1, 1));
+							background-color: $blueDark;
+						}
+					}
+				}
+
+				#legend {
+					button {
+						@include buttony;
+					}
+
+					& > div {
+						@include box-shadow(rgba(#000000, 0.2) 0 0 30px);
+						@include animation(fade-in-from-bottom .6s $easing);
+						display: none;
+
+						&.open {
+							display: block;
+						}
+
+						$h: 230px;
+						$padding: 20px;
+						@include box-sizing(border-box);
+
+						overflow: hidden;
+						height: $h;
+						width: 650px;
+						position: absolute;
+						background-color: #ffffff;
+
+						img {
+							width: $h;
+							height: $h;
+							float: left;
+							margin-right: $padding;
+							position: relative;
+						}
+
+						.btn-close {
+							position: absolute;
+							top: 0;
+							right: 0;
+							width: 40px;
+							height: 40px;
+							background-image: url('../images/icons/close-legend.svg');
+							@include background-size(cover);
+						}
+
+						.btn-play {
+							z-index: 2;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: $h;
+							height: $h;
+							background-image: url('../images/icons/play.svg');
+							background-position: center center;
+							background-repeat: no-repeat;
+							@include background-size(100px 100px);
+							@include filter(drop-shadow(0 0 5px rgba(#000000, 0.4)));
+						}
+
+						&.no-img {
+							height: inherit;
+						}
+
+						h2, & > div {
+							margin: $padding;
+						}
+
+						h2 {
+							color: $blueDark;
+							font-weight: $semibold;
+							@include subhead;
+						}
+
+						p {
+							color: #000000;
+							font-size: 18px;
+							line-height: 22px;
+						}
+					}
+				}
+			}
+		}
+
+		video {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: $stageWidth;
+			height: $stageHeight;
 		}
 	}
 

@@ -21,7 +21,6 @@ var BlueWhaleTranslate = function (data) {
 	}
 
 	this.initialize = function () {
-		console.log(data);
 		_initInteraction();
 	}
 

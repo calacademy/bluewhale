@@ -6,16 +6,20 @@
     <meta name="google" content="notranslate">
     <title>Blue Whale</title>
 
+    <link rel="stylesheet" href="stylesheets/jquery.bxslider.css" />
     <link rel="stylesheet" href="stylesheets/global.css" />
     
     <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <script src="js/modernizr.calacademy.js"></script>
     <script src="js/idle-timer.min.js"></script>
     <script src="js/jquery.jsonp.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
 
     <script src="js/config.js"></script>
     <script src="js/progressindicator.js"></script>
     <script src="js/bluewhalemodel.js"></script>
+    <script src="js/bluewhalemedia.js"></script>
     <script src="js/bluewhaletranslate.js"></script>
     <script src="js/bluewhale.js"></script>
 
@@ -40,8 +44,98 @@
           <li id="es">Español</li>
           <li id="en" class="active">English</li>
       </ul>
-      
-      <video id="whale" autoplay="1" loop="1" src="videos/whale.mp4"></video>
+
+      <button id="close">Close</button>
+
+      <section id="media-overlay">
+      </section>
+
+      <section id="slideshow">
+        <h1>Blue Whales: Past, Present, Future</h1>
+
+        <ul class="slides">
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+          <li>
+            <img src="images/fpo.jpg" />
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="whale">
+        <h1>A Moveable Feast</h1>
+
+        <button class="nav" data-target="slideshow"><div class="copy">Blue Whales:<br />Past, Present, Future</div></button>
+
+        <div id="points">
+          <div data-target="appetite"></div>
+          <div data-target="mouth"></div>
+          <div data-target="blowhole"></div>
+          <div data-target="heart"></div>
+          <div data-target="size"></div>
+          <div data-target="speed"></div>
+        </div>
+
+        <div id="legend">
+          <div id="appetite">
+            <img src="images/fpo.jpg" />
+            <h2>Appetite</h2>
+            <div><p>Vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p></div>
+          </div>
+          <div id="mouth" class="video" data-src="videos/osu.mp4">
+            <img src="images/fpo.jpg" />
+            <h2>Mouth</h2>
+            <div><p>Vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p></div>
+          </div>
+          <div id="blowhole" class="video" data-src="videos/osu.mp4">
+            <img src="images/fpo.jpg" />
+            <h2>Blowhole</h2>
+            <div><p>Vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p></div>
+          </div>
+          <div id="heart" class="no-img">
+            <h2>Heart</h2>
+            <div><p>Vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p></div>
+          </div>
+          <div id="size" class="no-img">
+            <h2>Size</h2>
+            <div><p>Vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p></div>
+          </div>
+          <div id="speed">
+            <img src="images/fpo.jpg" />
+            <h2>Speed</h2>
+            <div><p>Vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <video autoplay="1" loop="1" src="videos/whale.mp4"></video>
     </div>
 
     <div id="preload">

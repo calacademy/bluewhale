@@ -72,6 +72,86 @@
     opacity: 1;
   }
 }
+@-moz-keyframes fade-in-from-top {
+  from {
+    -moz-transform: translate3d(0, -50px, 0);
+    transform: translate3d(0, -50px, 0);
+    opacity: 0;
+  }
+  to {
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade-in-from-top {
+  from {
+    -webkit-transform: translate3d(0, -50px, 0);
+    transform: translate3d(0, -50px, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-from-top {
+  from {
+    -moz-transform: translate3d(0, -50px, 0);
+    -ms-transform: translate3d(0, -50px, 0);
+    -webkit-transform: translate3d(0, -50px, 0);
+    transform: translate3d(0, -50px, 0);
+    opacity: 0;
+  }
+  to {
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@-moz-keyframes fade-in-from-bottom {
+  from {
+    -moz-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+    opacity: 0;
+  }
+  to {
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade-in-from-bottom {
+  from {
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-from-bottom {
+  from {
+    -moz-transform: translate3d(0, 50px, 0);
+    -ms-transform: translate3d(0, 50px, 0);
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+    opacity: 0;
+  }
+  to {
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
 /* line 5, ../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -185,17 +265,25 @@ body, body * {
   outline: none;
 }
 /* line 45, ../sass/global.scss */
+body button {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+/* line 52, ../sass/global.scss */
 body #preload div,
 body .cn,
 body .cn * {
   font-family: 'HanSans', Helvetica, Arial, sans-serif;
 }
-/* line 51, ../sass/global.scss */
+/* line 58, ../sass/global.scss */
 body i,
 body em {
   font-style: italic;
 }
-/* line 63, ../sass/global.scss */
+/* line 70, ../sass/global.scss */
 body #root {
   position: relative;
   background-color: #000000;
@@ -208,14 +296,16 @@ body #root {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 74, ../sass/global.scss */
+/* line 81, ../sass/global.scss */
 body #root #languages {
+  z-index: 999;
+  position: relative;
   background-color: #000000;
   width: 100%;
   overflow: hidden;
   clear: both;
 }
-/* line 80, ../sass/global.scss */
+/* line 90, ../sass/global.scss */
 body #root #languages li {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -241,17 +331,17 @@ body #root #languages li.highlight, .no-touch body #root #languages li:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 100, ../sass/global.scss */
+/* line 110, ../sass/global.scss */
 body #root #languages li#cn {
   font-family: 'HanSans';
 }
-/* line 104, ../sass/global.scss */
+/* line 114, ../sass/global.scss */
 body #root #languages li.active {
   font-weight: 600;
   color: #ffffff;
   pointer-events: none;
 }
-/* line 112, ../sass/global.scss */
+/* line 122, ../sass/global.scss */
 body #root #close {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -271,17 +361,414 @@ body #root #close {
   -o-background-size: 62px 62px;
   -webkit-background-size: 62px 62px;
   background-size: 62px 62px;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
   cursor: hand;
   cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
 }
 /* line 14, ../sass/_mixins.scss */
 body #root #close.highlight, .no-touch body #root #close:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 142, ../sass/global.scss */
+/* line 150, ../sass/global.scss */
+.show-close body #root #close {
+  -moz-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  pointer-events: all;
+}
+/* line 160, ../sass/global.scss */
+body #root nav {
+  position: relative;
+  z-index: 3;
+}
+/* line 165, ../sass/global.scss */
+body #root section {
+  z-index: 2;
+  display: none;
+  position: relative;
+}
+/* line 170, ../sass/global.scss */
+body #root section.open {
+  display: block;
+}
+/* line 174, ../sass/global.scss */
+body #root section h1 {
+  font-family: 'Whitney Narrow';
+  font-size: 45px;
+  line-height: 1;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px;
+}
+/* line 181, ../sass/global.scss */
+body #root section#media-overlay {
+  z-index: 4;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+}
+/* line 191, ../sass/global.scss */
+body #root section#media-overlay video {
+  z-index: 1;
+  -moz-animation: fade-in 2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-animation: fade-in 2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: fade-in 2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  width: 1920px;
+  height: 1080px;
+}
+/* line 198, ../sass/global.scss */
+body #root section#media-overlay .progress-indicator {
+  z-index: 2;
+  position: absolute;
+  -moz-transition-delay: 1s;
+  -o-transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+  top: 20px;
+  right: 20px;
+}
+/* line 207, ../sass/global.scss */
+body #root section#media-overlay .progress-indicator svg {
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  width: 50px;
+  height: 50px;
+}
+/* line 213, ../sass/global.scss */
+body #root section#media-overlay .progress-indicator svg circle {
+  fill: none;
+}
+/* line 216, ../sass/global.scss */
+body #root section#media-overlay .progress-indicator svg circle.progress {
+  stroke: #ffffff;
+  stroke-width: 6;
+}
+/* line 220, ../sass/global.scss */
+body #root section#media-overlay .progress-indicator svg circle.bg {
+  stroke: #000000;
+  stroke-width: 2;
+}
+/* line 229, ../sass/global.scss */
+body #root section#slideshow {
+  width: 3250px;
+}
+/* line 234, ../sass/global.scss */
+body #root section#slideshow h1,
+body #root section#slideshow .bx-controls > div {
+  width: 1920px;
+}
+/* line 239, ../sass/global.scss */
+body #root section#slideshow h1 {
+  text-align: center;
+}
+/* line 243, ../sass/global.scss */
+body #root section#slideshow .slides {
+  width: 3250px;
+  margin-left: -665px;
+}
+/* line 249, ../sass/global.scss */
+body #root section#slideshow .slides > li {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 60px;
+}
+/* line 253, ../sass/global.scss */
+body #root section#slideshow .slides > li img {
+  -moz-border-radius: 265px;
+  -webkit-border-radius: 265px;
+  border-radius: 265px;
+  width: 530px;
+  height: 530px;
+  margin-bottom: 60px;
+}
+/* line 261, ../sass/global.scss */
+body #root section#slideshow .slides > li p {
+  font-weight: 600;
+  font-size: 2em;
+}
+/* line 266, ../sass/global.scss */
+body #root section#slideshow .slides .mid-slide {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/* line 272, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-pager {
+  pointer-events: none;
+  z-index: 2;
+}
+/* line 277, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-pager div a {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.25);
+}
+/* line 281, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-pager div a.active {
+  background: rgba(255, 255, 255, 0.75);
+}
+/* line 288, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-controls-direction {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+/* line 298, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-controls-direction a {
+  background: transparent;
+  cursor: hand;
+  cursor: pointer;
+  pointer-events: all;
+  margin: 0;
+  padding: 0;
+  display: block;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  -moz-background-size: 44px 44px;
+  -o-background-size: 44px 44px;
+  -webkit-background-size: 44px 44px;
+  background-size: 44px 44px;
+}
+/* line 14, ../sass/_mixins.scss */
+body #root section#slideshow .bx-wrapper .bx-controls-direction a.highlight, .no-touch body #root section#slideshow .bx-wrapper .bx-controls-direction a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+/* line 313, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-controls-direction a.bx-prev {
+  float: left;
+  left: 0;
+  background-image: url("../images/icons/previous-white.svg");
+  background-position: center left;
+}
+/* line 319, ../sass/global.scss */
+body #root section#slideshow .bx-wrapper .bx-controls-direction a.bx-next {
+  float: right;
+  right: 0;
+  background-image: url("../images/icons/next-white.svg");
+  background-position: center right;
+}
+/* line 330, ../sass/global.scss */
+body #root section#whale {
+  width: 1080px;
+  height: 1035px;
+  top: 45px;
+  left: 0;
+  position: absolute;
+}
+/* line 340, ../sass/global.scss */
+body #root section#whale h1 {
+  font-family: 'Whitney Narrow';
+  font-size: 60px;
+  line-height: 1;
+  margin-left: 60px;
+}
+/* line 345, ../sass/global.scss */
+body #root section#whale .nav {
+  position: absolute;
+  left: 60px;
+  bottom: 120px;
+  color: #ffffff;
+  font-size: 24px;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  text-align: left;
+}
+/* line 356, ../sass/global.scss */
+body #root section#whale .nav .copy {
+  padding-right: 60px;
+}
+/* line 360, ../sass/global.scss */
+body #root section#whale .nav .point {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+/* line 365, ../sass/global.scss */
+body #root section#whale .nav > div {
+  float: left;
+}
+/* line 370, ../sass/global.scss */
+body #root section#whale .nav,
+body #root section#whale #points > div {
+  cursor: pointer;
+}
+/* line 375, ../sass/global.scss */
+body #root section#whale .nav div.point,
+body #root section#whale #points > div {
+  display: block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  text-indent: -99999px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 3px solid #ffffff;
+  background-color: transparent;
+  padding: 2px;
+}
+/* line 379, ../sass/global.scss */
+body #root section#whale .nav div.point, body #root section#whale .nav div.point div,
+body #root section#whale #points > div,
+body #root section#whale #points > div div {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+}
+/* line 397, ../sass/global.scss */
+body #root section#whale .nav div.point div,
+body #root section#whale #points > div div {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  border: 2px solid #ffffff;
+  -moz-transition: -moz-transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: -o-transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transform: scale3d(0.6, 0.6, 0.6);
+  -ms-transform: scale3d(0.6, 0.6, 0.6);
+  -webkit-transform: scale3d(0.6, 0.6, 0.6);
+  transform: scale3d(0.6, 0.6, 0.6);
+  background-color: #ffffff;
+}
+/* line 417, ../sass/global.scss */
+body #root section#whale .nav div.point.selected div,
+body #root section#whale #points > div.selected div {
+  -moz-transform: scale3d(1, 1, 1);
+  -ms-transform: scale3d(1, 1, 1);
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  background-color: #003a70;
+}
+/* line 425, ../sass/global.scss */
+body #root section#whale #legend button {
+  cursor: hand;
+  cursor: pointer;
+}
+/* line 14, ../sass/_mixins.scss */
+body #root section#whale #legend button.highlight, .no-touch body #root section#whale #legend button:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+/* line 429, ../sass/global.scss */
+body #root section#whale #legend > div {
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 30px;
+  -moz-animation: fade-in-from-bottom 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-animation: fade-in-from-bottom 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: fade-in-from-bottom 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  display: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 230px;
+  width: 650px;
+  position: absolute;
+  background-color: #ffffff;
+}
+/* line 434, ../sass/global.scss */
+body #root section#whale #legend > div.open {
+  display: block;
+}
+/* line 448, ../sass/global.scss */
+body #root section#whale #legend > div img {
+  width: 230px;
+  height: 230px;
+  float: left;
+  margin-right: 20px;
+  position: relative;
+}
+/* line 456, ../sass/global.scss */
+body #root section#whale #legend > div .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/icons/close-legend.svg");
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+/* line 466, ../sass/global.scss */
+body #root section#whale #legend > div .btn-play {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 230px;
+  background-image: url("../images/icons/play.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -moz-background-size: 100px 100px;
+  -o-background-size: 100px 100px;
+  -webkit-background-size: 100px 100px;
+  background-size: 100px 100px;
+  -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+}
+/* line 480, ../sass/global.scss */
+body #root section#whale #legend > div.no-img {
+  height: inherit;
+}
+/* line 484, ../sass/global.scss */
+body #root section#whale #legend > div h2, body #root section#whale #legend > div > div {
+  margin: 20px;
+}
+/* line 488, ../sass/global.scss */
+body #root section#whale #legend > div h2 {
+  color: #003a70;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+}
+/* line 494, ../sass/global.scss */
+body #root section#whale #legend > div p {
+  color: #000000;
+  font-size: 18px;
+  line-height: 22px;
+}
+/* line 504, ../sass/global.scss */
+body #root video {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 1920px;
+  height: 1080px;
+}
+/* line 517, ../sass/global.scss */
 body #loading {
   position: absolute;
   display: table;
@@ -292,7 +779,7 @@ body #loading {
   bottom: 0;
   right: 0;
 }
-/* line 152, ../sass/global.scss */
+/* line 527, ../sass/global.scss */
 body #loading h1 {
   display: table-cell;
   vertical-align: middle;
@@ -302,38 +789,38 @@ body #loading h1 {
   color: #ffffff;
   padding-bottom: 30px;
 }
-/* line 163, ../sass/global.scss */
+/* line 538, ../sass/global.scss */
 body #root {
   display: none;
 }
-/* line 168, ../sass/global.scss */
+/* line 543, ../sass/global.scss */
 .loaded body #loading {
   display: none;
 }
-/* line 172, ../sass/global.scss */
+/* line 547, ../sass/global.scss */
 .loaded body #root {
   display: block;
 }
-/* line 178, ../sass/global.scss */
+/* line 553, ../sass/global.scss */
 body .en, body .cn, body .tl, body .es {
   display: none !important;
   -moz-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 185, ../sass/global.scss */
+/* line 560, ../sass/global.scss */
 html[lang="en"] body .en {
   display: block !important;
 }
-/* line 185, ../sass/global.scss */
+/* line 560, ../sass/global.scss */
 html[lang="cn"] body .cn {
   display: block !important;
 }
-/* line 185, ../sass/global.scss */
+/* line 560, ../sass/global.scss */
 html[lang="tl"] body .tl {
   display: block !important;
 }
-/* line 185, ../sass/global.scss */
+/* line 560, ../sass/global.scss */
 html[lang="es"] body .es {
   display: block !important;
 }
