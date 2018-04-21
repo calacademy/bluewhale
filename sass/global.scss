@@ -427,8 +427,10 @@ body {
 					}
 
 					& > div {
-						@include box-shadow(rgba(#000000, 0.2) 0 0 30px);
+						@include box-sizing(border-box);
 						@include animation(fade-in-from-bottom .6s $easing);
+						@include box-shadow(rgba(#000000, 0.2) 0 0 30px);
+
 						display: none;
 
 						&.open {
@@ -437,9 +439,7 @@ body {
 
 						$h: 230px;
 						$padding: 20px;
-						@include box-sizing(border-box);
 
-						overflow: hidden;
 						height: $h;
 						width: 650px;
 						position: absolute;
@@ -495,6 +495,75 @@ body {
 							color: #000000;
 							font-size: 18px;
 							line-height: 22px;
+						}
+
+						$arrowSize: 75px;
+
+						.arrow {
+							position: absolute;
+							margin: 0;
+							top: -$arrowSize;
+							width: $arrowSize;
+							height: $arrowSize;
+							background-color: rgba(#ffffff, 0.3);
+
+							@include clip-path(polygon(50% 0%, 100% 100%, 0% 100%, 50% 0%));
+						}
+
+						&.top {
+							.arrow {
+							}
+						}
+
+						&.left {
+							.arrow {
+								@include clip-path(polygon(100% 0%, 100% 100%, 0% 50%, 100% 0%));
+								top: 0;
+								left: -$arrowSize;
+							}
+						}
+
+						&.bottom {
+							.arrow {
+								@include clip-path(polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%));
+								top: $h;
+							}
+						}
+						&.bottom.no-img {
+							.arrow {
+								top: auto;
+							}
+						}
+
+						&#blowhole {
+							.arrow {
+								left: 90px;
+							}
+						}
+						&#mouth {
+							.arrow {
+								left: 44px;
+							}
+						}
+						&#appetite {
+							.arrow {
+								top: 155px;
+							}
+						}
+						&#heart {
+							.arrow {
+								left: 88px;
+							}
+						}
+						&#size {
+							.arrow {
+								left: 92px;
+							}
+						}
+						&#speed {
+							.arrow {
+								right: 124px;
+							}
 						}
 					}
 				}

@@ -70,8 +70,22 @@ var BlueWhale = function () {
 
 	var _initWhaleTouchPoints = function () {
 		if ($('#points div div').length == 0) {
+			// add center mark to points
 			$('#points > div').append('<div />');
 
+			// add no-img class
+			$('#legend > div').each(function () {
+				if ($(this).find('img').length == 0) {
+					$(this).addClass('no-img');
+				}
+			});
+
+			// legend arrows
+			var arrow = $('<div />');
+			arrow.addClass('arrow');
+			$('#legend > div').append(arrow);
+
+			// position points and legend
 			$('#points > div, #legend > div').each(function () {
 				var id = $(this).data('target');
 
@@ -79,7 +93,6 @@ var BlueWhale = function () {
 					id = $(this).attr('id');
 				}
 
-				// position map thumbnails
 				var pos = BLUEWHALE_CONFIG.points[id];
 
 				if ($(this).parent().attr('id') == 'legend') {

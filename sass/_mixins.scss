@@ -2,6 +2,11 @@
 @import "compass/utilities";
 @import "compass/css3/user-interface";
 
+@mixin clip-path ($prop) {
+	-webkit-clip-path: $prop;
+	clip-path: $prop;
+}
+
 @mixin small-caps {
 	text-transform: lowercase;
 	font-variant: small-caps;
