@@ -278,6 +278,7 @@ var BlueWhale = function () {
 			_initIdleTimer();
 		}
 
+		$(document).on('videoended', _onClose);
 		_initTranslate(data);
 		_initNav();
 	}

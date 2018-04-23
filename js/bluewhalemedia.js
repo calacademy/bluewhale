@@ -3,11 +3,9 @@ var BlueWhaleMedia = function () {
 	var _prog;
 
 	var _onVideoEnded = function (e) {
-		$(this).get(0).load();
 		$('html').removeClass('video-playing');
 		$(document).trigger('videoended');
 	}
-
 
 	var _onVideoProgress = function (e) {
 		var per = this.currentTime / this.duration;
