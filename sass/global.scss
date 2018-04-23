@@ -135,17 +135,18 @@ body {
 			width: $dim + ($left * 2);
 			height: $dim + ($top * 2);
 
+			padding: 0;
 			background-color: transparent;
 			border: none;
-
 			background-image: url('../images/icons/close-white.svg');
 			background-repeat: no-repeat;
 			background-position: $left $top;
 			@include background-size($dim $dim);
 			
-			@include buttony;
 			@include opacity(0);
+			@include buttony;
 			pointer-events: none;
+			margin-left: -9999px;
 
 			.show-close & {
 				@include transition(
@@ -153,7 +154,10 @@ body {
 				);
 
 				@include opacity(1);
+				@include buttony;
+
 				pointer-events: all;
+				margin-left: 0;
 			}
 		}
 
@@ -166,6 +170,7 @@ body {
 			z-index: 2;
 			display: none;
 			position: relative;
+			@include animation(fade-in 1s $easing);
 
 			&.open {
 				display: block;
@@ -227,9 +232,9 @@ body {
 			}
 
 			&#slideshow {
-				$slideWidth: 650px;
-
-				width: $slideWidth * 5;
+				$slideWidth: 384px;
+				$slideHeight: 800px;
+				$padding: 50px;
 
 				h1,
 				.bx-controls > div {
@@ -238,33 +243,125 @@ body {
 
 				h1 {
 					text-align: center;
+					margin-top: 35px;
+					margin-bottom: 40px;
 				}
 
 				.slides {
-					$padding: 60px;
+					width: 100%;
 
-					width: $slideWidth * 5;
-					margin-left: ($stageWidth - ($slideWidth * 5)) / 2;
+					&, & > li {
+						height: $slideHeight;
+					}
 
 					& > li {
-						@include box-sizing(border-box);
-						padding: $padding;
+						width: $slideWidth;
 
-						img {
-							$dim: $slideWidth - ($padding * 2);
-							@include border-radius($dim / 2);
-							width: $dim;
-							height: $dim;
-							margin-bottom: $padding;
+						.container {
+							@include box-sizing(border-box);
+							padding: $padding;
+							padding-top: 165px;
+
+							img {
+								$dim: $slideWidth - ($padding * 2);
+								@include border-radius($dim / 2);
+								width: $dim;
+								height: $dim;
+								margin-bottom: $padding / 2;
+							}
+
+							p {
+								font-weight: $semibold;
+								font-size: 1.5em;
+							}
+
+							@include transition(
+								opacity .6s $easing,
+								transform .6s $easing
+							);
+
+							transform-origin: 50% 50%;
+
+							& > div,
+							&:after {
+								@include transition(
+									opacity .7s $easing
+								);
+							}
+
+							& > div,
+							&:after {
+								@include opacity(0);
+							}
+
+							&:after {
+								content: '';
+								position: absolute;
+								top: 0;
+								left: 0;
+								bottom: 0;
+								right: 0;
+								z-index: -1;
+								background-color: #000000;
+							}
 						}
 
-						p {
-							font-weight: $semibold;
-							font-size: 2em;
+						$offset: 225px;
+
+						&,
+						&.slide-prev-prev,
+						&.slide-next-next {
+							.container {
+								@include opacity(.25);
+								@include transform(scale3d(.6, .6, 1));
+							}
 						}
-					}
-					.mid-slide {
-						background-color: rgba(#000000, 0.6);
+
+						&.slide-prev-prev {
+							.container {
+								@include transform(scale3d(.6, .6, 1) translateX(-$offset - 100px));
+							}
+						}
+						&.slide-next-next {
+							.container {
+								@include transform(scale3d(.6, .6, 1) translateX($offset + 100px));
+							}
+						}
+
+						&.slide-prev,
+						&.slide-next {
+							.container {
+								@include opacity(.75);
+								@include transform(scale3d(1, 1, 1));
+							}
+						}
+
+						&.slide-prev {
+							.container {
+								@include transform(translateX(-$offset));
+							}
+						}
+						&.slide-next {
+							.container {
+								@include transform(translateX($offset));
+							}
+						}
+
+						&.mid-slide {
+							z-index: 9999;
+
+							.container {
+								@include opacity(1);
+								@include transform(scale3d(1.75, 1.75, 1) translateX(0));
+
+								& > div {
+									@include opacity(1);
+								}
+								&:after {
+									@include opacity(.6);
+								}
+							}
+						}
 					}
 				}
 
@@ -272,6 +369,7 @@ body {
 					.bx-pager {
 						pointer-events: none;
 						z-index: 2;
+						bottom: -50px;
 
 						div {
 							a {
@@ -312,13 +410,13 @@ body {
 
 							&.bx-prev {
 								float: left;
-								left: 0;
+								left: $padding;
 								background-image: url('../images/icons/previous-white.svg');
 								background-position: center left;
 							}
 							&.bx-next {
 								float: right;
-								right: 0;
+								right: $padding;
 								background-image: url('../images/icons/next-white.svg');
 								background-position: center right;
 							}	
@@ -414,6 +512,15 @@ body {
 					}
 
 					&.selected {
+						div {
+							@include transform(scale3d(1, 1, 1));
+							background-color: $blueDark;
+						}
+					}
+				}
+
+				.nav.highlight {
+					div.point {
 						div {
 							@include transform(scale3d(1, 1, 1));
 							background-color: $blueDark;

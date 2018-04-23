@@ -1504,6 +1504,8 @@
         if (typeof (position) !== 'undefined') {
           value = slider.settings.mode === 'horizontal' ? -(position.left - moveBy) : -position.top;
           // plugin values to be animated
+          console.log(value);
+          
           setPositionProperty(value, 'slide', slider.settings.speed);
         }
 

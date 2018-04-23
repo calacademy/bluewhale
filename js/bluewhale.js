@@ -3,8 +3,10 @@
 
 var BlueWhale = function () {
 	var _numSlidesVisible = 5;
-	var _slideWidth = 650;
+	var _slideWidth = 660;
 	var _selectEvent = Modernizr.touch ? 'touchend' : 'click';
+	var _overEvent = Modernizr.touch ? 'touchstart' : 'mouseover';
+	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _media = new BlueWhaleMedia();
 
 	var _configPositions = function (els) {
@@ -43,6 +45,13 @@ var BlueWhale = function () {
 		}
 
 		return false;	
+	}
+
+	var _onOver = function () {
+		$(this).addClass('highlight');
+	}
+	var _onOut = function () {
+		$(this).removeClass('highlight');
 	}
 
 	var _onPoint = function () {
@@ -129,7 +138,13 @@ var BlueWhale = function () {
 		play.on(_selectEvent, _onPlay);
 		$('#legend > .video').prepend(play);
 
+		_addHighlightInteraction($('#legend button, .nav'));
 		$('#legend > div').addClass('processed');
+	}
+
+	var _addHighlightInteraction = function (el) {
+		el.on(_overEvent, _onOver);
+		el.on(_outEvent, _onOut);
 	}
 
 	var _onNav = function () {
@@ -172,20 +187,36 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
-		$('.mid-slide').removeClass('mid-slide');
-	}
+		$('.slides > li').removeClass('mid-slide');
+		$('.slides > li').removeClass('slide-prev');
+		$('.slides > li').removeClass('slide-prev-prev');
+		$('.slides > li').removeClass('slide-next');
+		$('.slides > li').removeClass('slide-next-next');
 
-	var _onSlideAfter = function (slide, oldIndex, newIndex) {
 		if (!slide) {
 			slide = $('.slides > li').not('.bx-clone').eq(0);
 		}
 
 		var i = _getMidSlideIndex(slide.index());
 		var midSlide = $('.slides > li').eq(i); 
-		midSlide.addClass('mid-slide');	
+		midSlide.addClass('mid-slide');
+
+		midSlide.prev().addClass('slide-prev');
+		midSlide.prev().prev().addClass('slide-prev-prev');
+		midSlide.next().addClass('slide-next');
+		midSlide.next().next().addClass('slide-next-next');
 	}
 
 	var _initCarousel = function () {
+		var isPreviousInit = typeof($('.slides').data('bxSlider')) != 'undefined';
+		if (isPreviousInit) return;
+
+		if ($('.slides > li > .container').length == 0) {
+			var container = $('<div />');
+			container.addClass('container');
+			$('.slides > li').wrapInner(container);
+		}
+
 		$('.slides').bxSlider({
 			speed: 600,
 			controls: true,
@@ -196,13 +227,13 @@ var BlueWhale = function () {
 			maxSlides: _numSlidesVisible,
 			moveSlides: 1,
 			onSlideBefore: _onSlideBefore,
-			onSlideAfter: _onSlideAfter,
 			touchEnabled: Modernizr.touch,
 			easing: 'cubic-bezier(.215, .61, .355, 1)',
 			slideWidth: _slideWidth
 		});
 
-		_onSlideAfter();
+		_addHighlightInteraction($('.bx-controls-direction a'));
+		_onSlideBefore();
 	}
 
 	var _initTranslate = function (data) {
@@ -231,6 +262,7 @@ var BlueWhale = function () {
 	}
 
 	var _initNav = function () {
+		_addHighlightInteraction($('#close'));
 		$('#close').on(_selectEvent, _onClose);
 		
 		$('.nav').prepend('<div class="point"><div /></div>');
