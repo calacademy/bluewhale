@@ -8,6 +8,13 @@ var BlueWhale = function () {
 	var _overEvent = Modernizr.touch ? 'touchstart' : 'mouseover';
 	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _media = new BlueWhaleMedia();
+	
+	var _animations = {
+		water: new FrameAnimation($('#water'), 300, 'images/animations/background/background_v15_'),
+		whale: new FrameAnimation($('#whale-frames'), 900, 'images/animations/whale/whale_krill_v15_'),
+		bus: new FrameAnimation($('#bus-frames'), 300, 'images/animations/bus/bus_v15_'),
+		heart: new FrameAnimation($('#heart-frames'), 900, 'images/animations/heartCar/heartCar_v15_')
+	};
 
 	var _configPositions = function (els) {
 		els.show();
@@ -55,16 +62,21 @@ var BlueWhale = function () {
 	}
 
 	var _onPoint = function () {
-		$('#points > div').removeClass('selected');
-		$('#legend > div').removeClass('open');
+		_onLegendClose();
 
 		$(this).addClass('selected');
 		$('#legend').find('#' + $(this).data('target')).addClass('open');
+
+		if ($(this).data('frames')) {
+			$('#' + $(this).data('frames')).addClass('active');
+		}
 	}
 
 	var _onLegendClose = function () {
-		$(this).parent().removeClass('open');
 		$('#points > div').removeClass('selected');
+		$('#legend > div').removeClass('open');
+		$('.legend-frames').removeClass('active');
+
 		return false;
 	}
 
@@ -159,6 +171,7 @@ var BlueWhale = function () {
 
 		switch ($(this).data('target')) {
 			case 'slideshow':
+				$('#legend .btn-close').trigger(_selectEvent);
 				_initCarousel();
 				break;
 			case 'media-overlay':
@@ -186,25 +199,55 @@ var BlueWhale = function () {
 		return (mid - 1 + index);
 	}
 
-	var _onSlideBefore = function (slide, oldIndex, newIndex) {
+	var _removeSlideClasses = function () {
 		$('.slides > li').removeClass('mid-slide');
 		$('.slides > li').removeClass('slide-prev');
 		$('.slides > li').removeClass('slide-prev-prev');
 		$('.slides > li').removeClass('slide-next');
 		$('.slides > li').removeClass('slide-next-next');
+	}
 
+	var _addSlideClasses = function (mid) {
+		mid.addClass('mid-slide');
+		mid.prev().addClass('slide-prev');
+		mid.prev().prev().addClass('slide-prev-prev');
+		mid.next().addClass('slide-next');
+		mid.next().next().addClass('slide-next-next');
+	}
+
+	var _onSlideBefore = function (slide, oldIndex, newIndex) {
+		var mid = $('.mid-slide');
+		_removeSlideClasses();
+
+		var slider = $('.slides').data('bxSlider');
+		var total = slider.getSlideCount();
+		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (total - 1));
+		var isNextFromLast = (oldIndex === (total - 1) && newIndex === 0);
+
+		// previous from first slide
+		if (isPreviousFromFirst) {
+			_addSlideClasses(mid.prev());
+			return;
+		}
+
+		// next from last slide
+		if (isNextFromLast) {
+			_addSlideClasses(mid.next());
+			return;
+		}
+
+		// normal
 		if (!slide) {
 			slide = $('.slides > li').not('.bx-clone').eq(0);
 		}
 
 		var i = _getMidSlideIndex(slide.index());
-		var midSlide = $('.slides > li').eq(i); 
-		midSlide.addClass('mid-slide');
+		var mid = $('.slides > li').eq(i);
+		_addSlideClasses(mid);
+	}
 
-		midSlide.prev().addClass('slide-prev');
-		midSlide.prev().prev().addClass('slide-prev-prev');
-		midSlide.next().addClass('slide-next');
-		midSlide.next().next().addClass('slide-next-next');
+	var _onSlideAfter = function (slide, oldIndex, newIndex) {
+
 	}
 
 	var _initCarousel = function () {
@@ -227,6 +270,7 @@ var BlueWhale = function () {
 			maxSlides: _numSlidesVisible,
 			moveSlides: 1,
 			onSlideBefore: _onSlideBefore,
+			onSlideAfter: _onSlideAfter,
 			touchEnabled: Modernizr.touch,
 			easing: 'cubic-bezier(.215, .61, .355, 1)',
 			slideWidth: _slideWidth
@@ -281,6 +325,13 @@ var BlueWhale = function () {
 		$(document).on('videoended', _onClose);
 		_initTranslate(data);
 		_initNav();
+
+		// start animations
+		$.each(_animations, function (key, val) {
+			if (val) {
+				val.start();	
+			}
+		})
 	}
 
 	var _onDataError = function () {
@@ -296,8 +347,15 @@ var BlueWhale = function () {
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
 
-		// var foo = new BlueWhaleModel();
-		$(document).trigger('bluewhalemodel.success');
+		$(window).on('load', function () {
+			console.log('DOM loaded!');
+
+			// @todo
+			// CMS data load
+			// var foo = new BlueWhaleModel();
+			
+			$(document).trigger('bluewhalemodel.success');
+		});
 	}
 
 	this.initialize();

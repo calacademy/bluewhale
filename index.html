@@ -17,6 +17,7 @@
     <script src="js/jquery.bxslider.js"></script>
 
     <script src="js/config.js"></script>
+    <script src="js/frameanimation.js"></script>
     <script src="js/progressindicator.js"></script>
     <script src="js/bluewhalemodel.js"></script>
     <script src="js/bluewhalemedia.js"></script>
@@ -98,8 +99,8 @@
           <div data-target="appetite"></div>
           <div data-target="mouth"></div>
           <div data-target="blowhole"></div>
-          <div data-target="heart"></div>
-          <div data-target="size"></div>
+          <div class="hide-on-select" data-target="heart" data-frames="heart-frames"></div>
+          <div data-target="size" data-frames="bus-frames"></div>
           <div data-target="speed"></div>
         </div>
 
@@ -109,12 +110,12 @@
             <h2>Appetite</h2>
             <div><p>Earth’s largest animal relies on a diet of tiny shrimp-like krill. A blue whale can devour 500 kg (1,100 lbs) of krill in a single mouthful. That’s half a million calories—it’s like eating 2,500 tacos in one bite.</p></div>
           </div>
-          <div id="mouth" class="top video" data-src="videos/osu.mp4">
+          <div id="mouth" class="top video" data-src="videos/mouth.mp4">
             <img src="images/fpo.jpg" />
             <h2>Mouth</h2>
             <div><p>A blue whale feeds by lunging, opening its mouth, allowing its pleated throat to expand, and scooping up krill and water. It uses the bristle-like baleen lining its top jaw to strain krill from each mouthful of water.</p></div>
           </div>
-          <div id="blowhole" class="bottom video" data-src="videos/osu.mp4">
+          <div id="blowhole" class="bottom video" data-src="videos/blowhole.mp4">
             <img src="images/fpo.jpg" />
             <h2>Blowhole</h2>
             <div><p>A whale’s blowhole is like human nostrils. A single, krill-scented exhale can send spray shooting 3 stories (9 m / 30 ft) into the air. The sound of a blow can be heard from miles away.</p></div>
@@ -133,9 +134,13 @@
             <div><p>Powerful tail flukes propel blue whales at up to 48 km/h (30 mph). That’s 6 times faster than the swiftest human swimmer. Opening its mouth to gulp krill slows a whale. It won’t bother unless the quantity of krill is worth the energy.</p></div>
           </div>
         </div>
+        
+        <div id="bus-frames" class="legend-frames"></div>
+        <div id="heart-frames" class="legend-frames"></div>
+        <div id="whale-frames"></div>
       </section>
 
-      <video autoplay="1" loop="1" src="videos/whale.mp4"></video>
+      <div id="water"></div>
     </div>
 
     <div id="preload">

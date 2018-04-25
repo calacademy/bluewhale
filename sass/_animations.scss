@@ -28,3 +28,28 @@
 		@include opacity(1);
 	}
 }
+
+@include keyframes(water) {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: -(300 * $stageHeight);
+	}
+}
+@include keyframes(bus) {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: -(300 * 200px);
+	}
+}
+@include keyframes(whale) {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: -(900 * $stageHeight);
+	}
+}
