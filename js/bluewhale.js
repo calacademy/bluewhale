@@ -302,6 +302,11 @@ var BlueWhale = function () {
 		});
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
+			if ($('html').hasClass('video-playing')) {
+				$(document).idleTimer('reset');
+				return;
+			}
+			
 			console.log('idle.idleTimer');
 
 			if (_translate) {
