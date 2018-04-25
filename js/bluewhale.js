@@ -340,6 +340,10 @@ var BlueWhale = function () {
 	}
 
 	this.initialize = function () {
+		// add extra bus image
+		var clone = $('#bus-frames .container img').last().clone();
+		$('#bus-frames .container').append(clone);
+
 		$(document).off('bluewhalemodel');
 		$(document).on('bluewhalemodel.error', _onDataError);
 		$(document).on('bluewhalemodel.success', _onData);

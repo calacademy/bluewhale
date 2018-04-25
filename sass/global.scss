@@ -739,7 +739,7 @@ body {
 					right: 60px;
 
 					&.active {
-						@include frame-animation(bus 10s steps(300));
+						@include frame-animation(bus 10s steps(300) forwards);
 					}
 				}
 

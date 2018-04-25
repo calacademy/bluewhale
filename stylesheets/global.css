@@ -1095,9 +1095,9 @@ body #root section#whale #bus-frames {
 }
 /* line 7, ../sass/_mixins.scss */
 body #root section#whale #bus-frames.active.animate .container {
-  -moz-animation: bus 10s steps(300);
-  -webkit-animation: bus 10s steps(300);
-  animation: bus 10s steps(300);
+  -moz-animation: bus 10s steps(300) forwards;
+  -webkit-animation: bus 10s steps(300) forwards;
+  animation: bus 10s steps(300) forwards;
 }
 /* line 746, ../sass/global.scss */
 body #root section#whale #heart-frames,
