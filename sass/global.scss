@@ -545,6 +545,21 @@ body {
 					}
 				}
 
+				// increase hit area of point
+				#points > div {
+					overflow: visible;
+
+					&:after {
+						content: '';
+						position: absolute;
+						top: -30px;
+						left: -30px;
+						width: 100px;
+						height: 100px;
+						background-color: rgba(#000000, 0);
+					}
+				}
+
 				.nav.highlight {
 					div.point {
 						div {
