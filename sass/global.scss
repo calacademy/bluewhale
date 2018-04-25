@@ -173,6 +173,7 @@ body {
 			.container {
 				will-change: top;
 				position: absolute;
+				@include animation-play-state(paused);
 
 				img {
 					display: block;
@@ -739,7 +740,10 @@ body {
 					right: 60px;
 
 					&.active {
-						@include frame-animation(bus 10s steps(300) forwards);
+						.container {
+							@include animation(bus 10s steps(300) forwards);
+							@include animation-play-state(running);
+						}
 					}
 				}
 
@@ -751,7 +755,15 @@ body {
 					top: -$translationUIHeight;
 					left: 0;
 
-					@include frame-animation(whale 30s steps(900) infinite);
+					.container {
+						@include animation(whale 30s steps(900) infinite);
+					}
+
+					&.animate {
+						.container {
+							@include animation-play-state(running);	
+						}
+					}
 				}
 
 				#whale-frames {
@@ -770,7 +782,11 @@ body {
 			top: 0;
 			left: 0;
 
-			@include frame-animation(water 10s steps(300) infinite);
+			&.animate {
+				.container {
+					@include animation(water 10s steps(300) infinite);	
+				}
+			}
 		}
 	}
 

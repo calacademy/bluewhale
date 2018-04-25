@@ -2,14 +2,6 @@
 @import "compass/utilities";
 @import "compass/css3/user-interface";
 
-@mixin frame-animation ($animationProps) {
-	&.animate {
-		.container {
-			@include animation($animationProps);	
-		}
-	}
-}
-
 @mixin clip-path ($prop) {
 	-webkit-clip-path: $prop;
 	clip-path: $prop;

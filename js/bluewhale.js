@@ -68,6 +68,10 @@ var BlueWhale = function () {
 		$('#legend').find('#' + $(this).data('target')).addClass('open');
 
 		if ($(this).data('frames')) {
+			// reset bus animation to first frame
+			$('#bus-frames .container').css('top', '0');
+
+			// add animation
 			$('#' + $(this).data('frames')).addClass('active');
 		}
 	}
@@ -75,7 +79,15 @@ var BlueWhale = function () {
 	var _onLegendClose = function () {
 		$('#points > div').removeClass('selected');
 		$('#legend > div').removeClass('open');
+
+		// capture current bus frame
+		var val = $('#bus-frames .container').css('top');
+		
+		// remove animation
 		$('.legend-frames').removeClass('active');
+
+		// pause to last bus frame
+		$('#bus-frames .container').css('top', val);
 
 		return false;
 	}
