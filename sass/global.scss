@@ -55,6 +55,10 @@ body {
 		font-family: 'HanSans', Helvetica, Arial, sans-serif;
 	}
 
+	#preload .en {
+		font-family: 'Whitney', Helvetica, Arial, sans-serif;
+	}
+
 	i,
 	em {
 		font-style: italic;
@@ -587,16 +591,18 @@ body {
 						}
 
 						$h: 230px;
-						$padding: 20px;
+						$borderWidth: 4px;
+						$padding: 15px;
 
+						padding: $borderWidth;
 						height: $h;
-						width: 650px;
+						width: 820px;
 						position: absolute;
 						background-color: #ffffff;
 
 						img {
-							width: $h;
-							height: $h;
+							width: $h - ($borderWidth * 2);
+							height: $h - ($borderWidth * 2);
 							float: left;
 							margin-right: $padding;
 							position: relative;
@@ -608,8 +614,10 @@ body {
 							right: 0;
 							width: 40px;
 							height: 40px;
+							background-repeat: no-repeat;
+							background-position: 15px 10px;
 							background-image: url('../images/icons/close-legend.svg');
-							@include background-size(cover);
+							@include background-size(15px 15px);
 						}
 
 						.btn-play {
@@ -628,6 +636,7 @@ body {
 
 						&.no-img {
 							height: inherit;
+							width: 590px;
 						}
 
 						h2, & > div {
