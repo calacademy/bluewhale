@@ -185,6 +185,26 @@ body {
 			}
 		}
 
+		.cta {
+			position: absolute;
+			z-index: 10;
+			left: 0;
+			bottom: 60px;
+			width: 100%;	
+			text-align: center;
+			@include subhead;
+
+			@include transition(
+				opacity .6s $easing .2s
+			);
+
+			@include opacity(1);
+
+			&.hide {
+				@include opacity(0);
+			}
+		}
+
 		section {
 			z-index: 2;
 			display: none;

@@ -63,7 +63,8 @@ var BlueWhale = function () {
 
 	var _onPoint = function () {
 		_onLegendClose();
-
+		$('#cta-spot').addClass('hide');
+		
 		$(this).addClass('selected');
 		$('#legend').find('#' + $(this).data('target')).addClass('open');
 
@@ -313,6 +314,7 @@ var BlueWhale = function () {
 				_translate.reset();
 			}
 
+			$('.cta').removeClass('hide');
 			$('html').addClass('attract');
     	});
 
@@ -368,13 +370,11 @@ var BlueWhale = function () {
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
 
-		$(window).on('load', function () {
-			console.log('DOM loaded!');
+		// @todo
+		// CMS data load
+		// var foo = new BlueWhaleModel();
 
-			// @todo
-			// CMS data load
-			// var foo = new BlueWhaleModel();
-			
+		$(window).on('load', function () {
 			$(document).trigger('bluewhalemodel.success');
 		});
 	}
