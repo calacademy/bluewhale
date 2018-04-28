@@ -64,7 +64,7 @@ var BlueWhale = function () {
 	var _onPoint = function () {
 		_onLegendClose();
 		$('#cta-spot').addClass('hide');
-		
+
 		$(this).addClass('selected');
 		$('#legend').find('#' + $(this).data('target')).addClass('open');
 
@@ -298,6 +298,8 @@ var BlueWhale = function () {
 	}
 
 	var _initIdleTimer = function () {
+		console.log('_initIdleTimer');
+
 		$(document).idleTimer({
 			timeout: BLUEWHALE_CONFIG.idleSeconds * 1000
 		});
@@ -316,11 +318,20 @@ var BlueWhale = function () {
 
 			$('.cta').removeClass('hide');
 			$('html').addClass('attract');
+			$('#attract video').get(0).play();
+
+			// ghost nav to attract screen
+			var attractBtn = $('<div />');
+			attractBtn.data('target', 'attract');
+			_onNav.call(attractBtn);
     	});
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
     		console.log('active.idleTimer');
+    		
     		$('html').removeClass('attract');
+    		$('#attract video').get(0).pause();
+    		_onNav();
     	});
 	}
 

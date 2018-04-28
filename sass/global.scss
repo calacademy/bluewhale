@@ -222,6 +222,14 @@ body {
 				@include text-shadow(rgba(#000000, 0.5) 0 0 20px);
 			}
 
+			&#attract {
+				video {
+					margin-top: -$translationUIHeight;
+					width: $stageWidth;
+					height: $stageHeight;
+				}
+			}
+
 			&#media-overlay {
 				z-index: 4;
 
