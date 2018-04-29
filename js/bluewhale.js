@@ -356,7 +356,7 @@ var BlueWhale = function () {
 			}
 		});
 
-		// start on whale
+		// start on attract
 		$(document).trigger('idle');
 	}
 
