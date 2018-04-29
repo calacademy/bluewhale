@@ -628,12 +628,28 @@ body {
 						position: absolute;
 						background-color: #ffffff;
 
-						img {
+						img,
+						.btn-play {
 							width: $h - ($borderWidth * 2);
 							height: $h - ($borderWidth * 2);
+						}
+
+						img {
 							float: left;
 							margin-right: $padding;
 							position: relative;
+						}
+
+						.btn-play {
+							z-index: 2;
+							position: absolute;
+							top: $borderWidth;
+							left: $borderWidth;
+							background-image: url('../images/icons/play.svg');
+							background-position: center center;
+							background-repeat: no-repeat;
+							@include background-size(100px 100px);
+							@include filter(drop-shadow(0 0 5px rgba(#000000, 0.4)));
 						}
 
 						.btn-close {
@@ -646,20 +662,6 @@ body {
 							background-position: 15px 10px;
 							background-image: url('../images/icons/close-legend.svg');
 							@include background-size(15px 15px);
-						}
-
-						.btn-play {
-							z-index: 2;
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: $h;
-							height: $h;
-							background-image: url('../images/icons/play.svg');
-							background-position: center center;
-							background-repeat: no-repeat;
-							@include background-size(100px 100px);
-							@include filter(drop-shadow(0 0 5px rgba(#000000, 0.4)));
 						}
 
 						&.no-img {
