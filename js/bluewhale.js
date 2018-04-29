@@ -313,7 +313,8 @@ var BlueWhale = function () {
 		console.log('_initIdleTimer');
 
 		$(document).idleTimer({
-			timeout: BLUEWHALE_CONFIG.idleSeconds * 1000
+			timeout: BLUEWHALE_CONFIG.idleSeconds * 1000,
+			idle: true
 		});
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
@@ -356,7 +357,7 @@ var BlueWhale = function () {
 		});
 
 		// start on whale
-		_onNav('whale');
+		$(document).trigger('idle');
 	}
 
 	var _onDataError = function () {
