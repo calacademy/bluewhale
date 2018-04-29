@@ -189,7 +189,7 @@ body {
 			position: absolute;
 			z-index: 10;
 			left: 0;
-			bottom: 60px;
+			bottom: 30px;
 			width: 100%;	
 			text-align: center;
 			@include subhead;
@@ -223,7 +223,22 @@ body {
 			}
 
 			&#attract {
+				header {
+					position: absolute;
+					top: 30px;
+					left: 0;
+					z-index: 2;
+
+					margin: 0;
+					padding: 0;
+
+					img {
+						display: block;
+					}
+				}
+
 				video {
+					z-index: 1;
 					margin-top: -$translationUIHeight;
 					width: $stageWidth;
 					height: $stageHeight;
