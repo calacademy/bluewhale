@@ -240,6 +240,8 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
+		console.log('_onSlideBefore');
+
 		$('html').removeClass('carousel-edge');
 
 		var mid = $('.mid-slide');
@@ -272,6 +274,8 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideAfter = function (slide, oldIndex, newIndex) {
+		console.log('_onSlideAfter');
+
 		var total = _carousel.getSlideCount();
 		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (total - 1));
 		var isNextFromLast = (oldIndex === (total - 1) && newIndex === 0);
@@ -279,6 +283,23 @@ var BlueWhale = function () {
 		if (isPreviousFromFirst || isNextFromLast) {
 			$('html').addClass('carousel-edge');
 			_addSlideClasses(slide.next().next());
+		}
+	}
+
+	var _stopPropagation = function (e) {
+		$(document).trigger('mousedown');
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
+	var _onSlideClick = function (e) {
+		if ($(this).parent().hasClass('slide-prev')) {
+			_stopPropagation(e);
+			_carousel.goToPrevSlide();
+		}
+		if ($(this).parent().hasClass('slide-next')) {
+			_stopPropagation(e);
+			_carousel.goToNextSlide();
 		}
 	}
 
@@ -295,6 +316,8 @@ var BlueWhale = function () {
 
 			var container = $('<div />');
 			container.addClass('container');
+			container.on(_selectEvent, _onSlideClick);
+
 			$(this).wrapInner(container);
 		});
 

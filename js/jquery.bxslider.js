@@ -1292,7 +1292,6 @@
             // slides were getting stuck mid-position on crazy swipes
             var position = el.getCurrentSlideElement().position();
             value = position.left * -1;
-            
             setPositionProperty(value, 'reset', 200);
 
             // setPositionProperty(value, 'reset', 200);

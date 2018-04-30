@@ -393,6 +393,8 @@ body {
 
 						&.slide-prev,
 						&.slide-next {
+							z-index: 999;
+							
 							.container {
 								@include opacity(.75);
 								@include transform(scale3d(1, 1, 1));
