@@ -348,12 +348,13 @@ var BlueWhale = function () {
 
 		$(document).idleTimer({
 			timeout: BLUEWHALE_CONFIG.idleSeconds * 1000,
+			events: 'keydown mousedown touchstart',
 			idle: true
 		});
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
 			if ($('html').hasClass('video-playing')) {
-				$(document).idleTimer('reset');
+				$(document).trigger('mousedown');
 				return;
 			}
 			
