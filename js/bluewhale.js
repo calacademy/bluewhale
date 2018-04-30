@@ -240,6 +240,8 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
+		$('html').removeClass('carousel-edge');
+
 		var mid = $('.mid-slide');
 		_removeSlideClasses();
 
@@ -270,20 +272,31 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideAfter = function (slide, oldIndex, newIndex) {
+		var total = _carousel.getSlideCount();
+		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (total - 1));
+		var isNextFromLast = (oldIndex === (total - 1) && newIndex === 0);
 
+		if (isPreviousFromFirst || isNextFromLast) {
+			$('html').addClass('carousel-edge');
+			_addSlideClasses(slide.next().next());
+		}
 	}
 
 	var _initCarousel = function () {
+		$('html').removeClass('carousel-edge');
+
 		if (_carousel) {
 			_carousel.jumpToSlide(0);
 			return;
 		}
 
-		if ($('.slides > li > .container').length == 0) {
+		$('.slides > li').each(function () {
+			$(this).attr('index', $(this).index());
+
 			var container = $('<div />');
 			container.addClass('container');
-			$('.slides > li').wrapInner(container);
-		}
+			$(this).wrapInner(container);
+		});
 
 		_carousel = $('.slides').bxSlider({
 			speed: 600,

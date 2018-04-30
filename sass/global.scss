@@ -426,8 +426,12 @@ body {
 							}
 						}
 
-						&.cloned-last {
-							background-color: rgba(red, 0.25);
+						.carousel-edge & {
+							.container,
+							.container > div,
+							.container:after {
+								@include transition-duration(0s !important);
+							}
 						}
 					}
 				}
