@@ -108,6 +108,8 @@ var BlueWhale = function () {
 			$('#legend > div').each(function () {
 				if ($(this).find('img').length == 0) {
 					$(this).addClass('no-img');
+				} else {
+					$(this).addClass('with-img');
 				}
 			});
 
@@ -240,8 +242,6 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
-		console.log('_onSlideBefore');
-
 		$('html').removeClass('carousel-edge');
 
 		var mid = $('.mid-slide');
@@ -274,8 +274,6 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideAfter = function (slide, oldIndex, newIndex) {
-		console.log('_onSlideAfter');
-
 		var total = _carousel.getSlideCount();
 		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (total - 1));
 		var isNextFromLast = (oldIndex === (total - 1) && newIndex === 0);

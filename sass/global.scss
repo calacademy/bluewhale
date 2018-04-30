@@ -644,7 +644,7 @@ body {
 						$padding: 15px;
 
 						padding: $borderWidth;
-						height: $h;
+						min-height: $h;
 						width: 820px;
 						position: absolute;
 						background-color: #ffffff;
@@ -685,11 +685,6 @@ body {
 							@include background-size(15px 15px);
 						}
 
-						&.no-img {
-							height: inherit;
-							width: 590px;
-						}
-
 						h2, & > div {
 							margin: $padding;
 						}
@@ -698,6 +693,21 @@ body {
 							color: $blueDark;
 							font-weight: $semibold;
 							@include subhead;
+						}
+
+						&.no-img {
+							min-height: initial;
+							width: 590px;
+						}
+
+						&.with-img {
+							.copy {
+								@include box-sizing(border-box);
+								float: left;
+								margin: 0;
+								margin-bottom: $padding;
+								width: calc(100% - #{$h + $padding});
+							}
 						}
 
 						p {
