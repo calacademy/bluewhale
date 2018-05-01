@@ -22,8 +22,8 @@ html {
 
 body {
 	// curly quotes
-	-webkit-font-feature-settings: 'ss17' 1;
-	font-feature-settings: 'ss17' 1;
+	-webkit-font-feature-settings: 'ss17' 1, 'onum' 1;
+	font-feature-settings: 'ss17' 1, 'onum' 1;
 
 	#preload {
 		position: absolute;
@@ -192,7 +192,8 @@ body {
 			bottom: 30px;
 			width: 100%;	
 			text-align: center;
-			@include subhead;
+			@include h3;
+			@include text-shadow(rgba(#000000, 0.5) 0 0 20px);
 
 			@include transition(
 				opacity .6s $easing .2s
@@ -216,10 +217,10 @@ body {
 			}
 
 			h1 {
-				@include head;
+				@include h1;
 				margin-top: 30px;
 				margin-bottom: 30px;
-				@include text-shadow(rgba(#000000, 0.5) 0 0 20px);
+				// @include text-shadow(rgba(#000000, 0.5) 0 0 20px);
 			}
 
 			&#attract {
@@ -304,6 +305,7 @@ body {
 				}
 
 				h1 {
+					font-weight: $semibold;
 					text-align: center;
 					margin-top: 35px;
 					margin-bottom: 40px;
@@ -333,9 +335,8 @@ body {
 							}
 
 							p {
-								font-weight: $semibold;
-								font-size: 20px;
-								line-height: 22px;
+								font-weight: $book;
+								@include h4;
 							}
 
 							@include transition(
@@ -509,7 +510,7 @@ body {
 				$padding: 60px;
 
 				h1 {
-					@include megahead;
+					@include h1(false, true);
 					margin-left: $padding;	
 				}
 
@@ -519,7 +520,7 @@ body {
 					bottom: $padding * 2;
 
 					color: #ffffff;
-					font-size: 24px;
+					@include h3;
 					border: 2px solid #ffffff;
 					padding: 10px;
 					text-align: left;
@@ -690,9 +691,8 @@ body {
 						}
 
 						h2 {
-							color: $blueDark;
 							font-weight: $semibold;
-							@include subhead;
+							@include h2;
 						}
 
 						&.no-img {
@@ -706,14 +706,17 @@ body {
 								float: left;
 								margin: 0;
 								margin-bottom: $padding;
-								width: calc(100% - #{$h + $padding});
+								width: calc(100% - #{$h - ($borderWidth * 3) + ($padding * 2)});
 							}
 						}
 
+						h2,
 						p {
-							color: #000000;
-							font-size: 18px;
-							line-height: 22px;
+							color: $blueDark;
+						}
+
+						p {
+							@include body;
 						}
 
 						$arrowSize: 75px;

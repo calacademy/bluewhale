@@ -22,31 +22,53 @@
 	font-variant: small-caps;
 }
 
-@mixin head($multiLine: false) {
+@mixin h1($multiLine: false, $mega: false) {
 	font-family: 'Whitney Narrow';
-	font-size: 50px;
 	line-height: 1;
 
-	@if $multiLine {
-		line-height: 56px;
+	@if $mega {
+		font-size: 60px;
+
+		@if $multiLine {
+			line-height: 68px;
+		}
+	} @else {
+		font-size: 50px;
+	
+		@if $multiLine {
+			line-height: 56px;
+		}
 	}
 }
 
-@mixin megahead($multiLine: false) {
-	font-family: 'Whitney Narrow';
-	font-size: 60px;
-	line-height: 1;
-
-	@if $multiLine {
-		line-height: 68px;
-	}
-}
-
-@mixin subhead($multiLine: false) {
+@mixin h2($multiLine: false) {
 	font-size: 30px;
 	line-height: 1;
 
 	@if $multiLine {
 		line-height: 36px;
 	}
+}
+
+@mixin h3($multiLine: false) {
+	font-size: 24px;
+	line-height: 1;
+
+	@if $multiLine {
+		line-height: 30px;
+	}
+}
+
+@mixin h4($multiLine: false) {
+	font-size: 20px;
+	line-height: 1;
+
+	@if $multiLine {
+		line-height: 22px;
+	}
+}
+
+@mixin body {
+	font-size: 18px;
+	line-height: 22px;
 }

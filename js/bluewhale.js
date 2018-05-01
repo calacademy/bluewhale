@@ -395,6 +395,12 @@ var BlueWhale = function () {
 
 		// start on attract
 		$(document).trigger('idle');
+		
+		// set idle mode to true just this once
+		var obj = $(document).data('idleTimerObj');
+		obj.idle = true;
+		
+		$(document).data('idleTimerObj', obj);
 	}
 
 	var _onDataError = function () {
