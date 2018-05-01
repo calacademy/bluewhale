@@ -38,13 +38,18 @@
       <h1>Loading&hellip;</h1>
     </div>
 
-    <div id="root">  
-      <ul id="languages">  
-          <li id="tl">Filipino</li>
-          <li id="cn">繁体中文</li>
-          <li id="es">Español</li>
-          <li id="en" class="active">English</li>
-      </ul>
+    <div id="root">
+      <nav>
+        <ul id="languages">  
+            <li id="tl">Filipino</li>
+            <li id="cn">繁体中文</li>
+            <li id="es">Español</li>
+            <li id="en" class="active">English</li>
+        </ul>
+        <div id="btn-credits" class="nav" data-target="credits">
+          Credits
+        </div>
+      </nav>
 
       <section id="attract">
         <header>
@@ -54,7 +59,7 @@
           <img src="images/header-tl.png" class="tl" />
         </header>
         <div id="cta-attract" class="cta">
-          <div class="en">Tap to Explore</div>
+          <div>Tap to Explore</div>
         </div>
         <video src="videos/attract.mp4" autoplay="1" loop="1" muted="1"></video>
       </section>
@@ -62,6 +67,77 @@
       <button id="close">Close</button>
 
       <section id="media-overlay">
+      </section>
+
+      <section id="credits">
+        <h1>Credits</h1>
+        
+        <div class="container">
+          <ul>
+            <li>
+              <h2>Smart car 3D model</h2>
+              <div>squir / Turbosquid</div>
+            </li>
+            <li>
+              <h2>School bus 3D model</h2>
+              <div>Adrian Ciurea / Turbosquid</div>
+            </li>
+            <li>
+              <h2>Krill in hand</h2>
+              <div>© Robert Perry – MarineBioPhotography.com</div>
+            </li>
+            <li>
+              <h2>Whale feeding and spouting video</h2>
+              <div>Research conducted by the GEMMLab at Oregon State University https://mmi.oregonstate.edu/gemm-lab
+              <br />Drone footage filmed by Todd Chandler</div>
+            </li>
+            <li>
+              <h2>Tail fluke</h2>
+              <div>National Geographic Creative / Alamy Stock Photo</div>
+            </li>
+            <li>
+              <h2>Two whales swimming</h2>
+              <div>Brandon Cole Marine Photography / Alamy Stock Photo</div>
+            </li>
+            <li>
+              <h2>Harpoon cannon illustration</h2>
+              <div>Universal Images Group / Getty Images</div>
+            </li>
+          </ul>
+
+          <ul>
+            <li>
+              <h2>Smart car 3D model</h2>
+              <div>squir / Turbosquid</div>
+            </li>
+            <li>
+              <h2>School bus 3D model</h2>
+              <div>Adrian Ciurea / Turbosquid</div>
+            </li>
+            <li>
+              <h2>Krill in hand</h2>
+              <div>© Robert Perry – MarineBioPhotography.com</div>
+            </li>
+            <li>
+              <h2>Whale feeding and spouting video</h2>
+              <div>Research conducted by the GEMMLab at Oregon State University https://mmi.oregonstate.edu/gemm-lab
+              <br />Drone footage filmed by Todd Chandler</div>
+            </li>
+            <li>
+              <h2>Tail fluke</h2>
+              <div>National Geographic Creative / Alamy Stock Photo</div>
+            </li>
+            <li>
+              <h2>Two whales swimming</h2>
+              <div>Brandon Cole Marine Photography / Alamy Stock Photo</div>
+            </li>
+            <li>
+              <h2>Harpoon cannon illustration</h2>
+              <div>Universal Images Group / Getty Images</div>
+            </li>
+          </ul>
+        </div>
+
       </section>
 
       <section id="slideshow">
@@ -107,10 +183,10 @@
         <h1>A Moveable Feast</h1>
 
         <div id="cta-spot" class="cta">
-          <div class="en">Tap a Spot to Explore</div>
+          <div>Tap a Spot to Explore</div>
         </div>
 
-        <button class="nav" data-target="slideshow"><div class="copy">Blue Whales:<br />Past, Present, Future</div></button>
+        <button class="nav with-point" data-target="slideshow"><div class="copy">Blue Whales:<br />Past, Present, Future</div></button>
 
         <div id="points">
           <div data-target="appetite"></div>

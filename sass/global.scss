@@ -73,7 +73,7 @@ body {
 
 	#root {
 		position: relative;
-		background-color: #000000;
+		background-color: $black;
 		
 		@include box-sizing(border-box);
 		width: $stageWidth;
@@ -82,45 +82,66 @@ body {
 		margin-left: auto;
 		margin-right: auto;
 
-		#languages {
-		    z-index: 999;
+		nav {
+			z-index: 999;
 		    position: relative;
 
-		    background-color: #000000;
+		    background-color: $black;
 		    width: 100%;
 		    overflow: hidden;
 		    clear: both;
-
-		    li {
+		    
+		    &, li, div {
 		    	@include box-sizing(border-box);
-		    	@include buttony;
-
-		    	float: right;
 		    	height: $translationUIHeight;
-		    	border-left: 1px solid #ffffff;
+		    }
 
-		    	font-size: 17px;
-			    line-height: 1;
-			    letter-spacing: 1.25px;
-			    text-transform: uppercase;
-			    padding-left: 60px;
+		    #btn-credits,
+		    li {
+		    	@include buttony;
+		    	float: right;
+		    	padding-left: 60px;
 			    padding-right: 60px;
 			    padding-top: 14px;
+		    }
 
-			    color: $blue;
-			    font-weight: $medium;
-			    font-family: 'Whitney Condensed';
+		    #btn-credits {
+		    	@include opacity(.6);
 
-		    	&#cn {
-		    		font-family: 'HanSans';
+		    	html[active-section="credits"] &,
+		    	&.highlight {
+		    		@include opacity(1);
 		    	}
 
-		    	&.active {
-					font-weight: $semibold;
-        			color: #ffffff;
-        			pointer-events: none;
+		    	html[active-section="credits"] & {
+		    		pointer-events: none;
 		    	}
 		    }
+
+			#languages {
+			    li {
+			    	border-left: 1px solid rgba(#ffffff, .6);
+
+			    	font-size: 17px;
+				    line-height: 1;
+				    letter-spacing: 1.25px;
+				    text-transform: uppercase;
+
+				    color: $blue;
+				    font-weight: $medium;
+				    font-family: 'Whitney Condensed';
+
+			    	&#cn {
+			    		font-family: 'HanSans';
+			    	}
+
+			    	&.active {
+						font-weight: $semibold;
+	        			color: #ffffff;
+	        			pointer-events: none;
+			    	}
+			    }
+			}
 		}
 
 		#close {
@@ -223,6 +244,45 @@ body {
 				// @include text-shadow(rgba(#000000, 0.5) 0 0 20px);
 			}
 
+			&#credits {
+				background-color: $black;
+				position: absolute;
+				top: $translationUIHeight;
+				left: 0;
+				right: 0;
+				bottom: 0;
+
+				@include box-sizing(border-box);
+				padding: 180px;
+				padding-top: 0;
+
+				h1 {
+					text-align: center;
+					margin-bottom: 40px;
+				}
+
+				.container {
+					ul {
+						width: 50%;
+						float: left;
+
+						li {
+							margin-bottom: 30px;
+
+							h2 {
+								@include h2;
+								margin-bottom: 15px;
+							}
+
+							div {
+								@include body;
+								width: 75%;
+							}
+						}
+					}
+				}
+			}
+
 			&#attract {
 				header {
 					position: absolute;
@@ -286,7 +346,7 @@ body {
 								stroke-width: 6;
 							}
 							&.bg {
-								stroke: #000000;
+								stroke: $black;
 								stroke-width: 2;
 							}
 						}
@@ -366,7 +426,7 @@ body {
 								bottom: 0;
 								right: 0;
 								z-index: -1;
-								background-color: #000000;
+								background-color: $black;
 							}
 						}
 

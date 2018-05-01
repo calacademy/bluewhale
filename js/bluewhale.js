@@ -162,7 +162,7 @@ var BlueWhale = function () {
 		play.on(_selectEvent, _onPlay);
 		$('#legend > .video').prepend(play);
 
-		_addHighlightInteraction($('#legend button, .nav'));
+		_addHighlightInteraction($('#legend button'));
 		$('#legend > div').addClass('processed');
 	}
 
@@ -182,6 +182,8 @@ var BlueWhale = function () {
 		$('html').addClass('show-close');
 		$('html').removeClass('attract');
 		$('#attract video').get(0).pause();
+		$('#btn-credits').removeClass('highlight');
+		$('html').attr('active-section', section);
 
 		switch (section) {
 			case 'attract':
@@ -193,6 +195,9 @@ var BlueWhale = function () {
 				$('.cta').removeClass('hide');
 				$('html').addClass('attract');
 				$('#attract video').get(0).play();
+				break;
+			case 'credits':
+				$('#btn-credits').addClass('highlight');
 				break;
 			case 'slideshow':
 				_onLegendClose();
@@ -371,10 +376,10 @@ var BlueWhale = function () {
 	}
 
 	var _initNav = function () {
-		_addHighlightInteraction($('#close'));
+		_addHighlightInteraction($('#close, .nav'));
+		$('.with-point').prepend('<div class="point"><div /></div>');
+
 		$('#close').on(_selectEvent, _onClose);
-		
-		$('.nav').prepend('<div class="point"><div /></div>');
 		$('.nav').on(_selectEvent, _onButtonNav);
 	}
 
@@ -423,7 +428,7 @@ var BlueWhale = function () {
 		// @todo
 		// CMS data load
 		// var foo = new BlueWhaleModel();
-
+		
 		$(window).on('load', function () {
 			$(document).trigger('bluewhalemodel.success');
 		});
