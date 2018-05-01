@@ -220,6 +220,11 @@ var BlueWhale = function () {
 		return false;
 	}
 
+	var _onVideoEnded = function () {
+		$(document).idleTimer('reset');
+		_onClose();
+	}
+
 	var _getMidSlideIndex = function (index) {
 		var mid = Math.ceil(_numSlidesVisible / 2);
 		return (mid - 1 + index);
@@ -285,7 +290,7 @@ var BlueWhale = function () {
 	}
 
 	var _stopPropagation = function (e) {
-		$(document).trigger('mousedown');
+		$(document).idleTimer('reset');
 		e.preventDefault();
 		e.stopPropagation();
 	}
@@ -344,26 +349,23 @@ var BlueWhale = function () {
 	}
 
 	var _initIdleTimer = function () {
-		console.log('_initIdleTimer');
-
 		$(document).idleTimer({
 			timeout: BLUEWHALE_CONFIG.idleSeconds * 1000,
-			events: 'keydown mousedown touchstart',
-			idle: true
+			events: 'keydown mousedown touchstart'
 		});
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
 			if ($('html').hasClass('video-playing')) {
-				$(document).trigger('mousedown');
+				$(document).idleTimer('reset');
 				return;
 			}
 			
-			console.log('idle.idleTimer');
+			console.log('idle');
 			_onNav('attract');
     	});
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
-    		console.log('active.idleTimer');
+    		console.log('active');
     		_onNav('whale');
     	});
 	}
@@ -378,7 +380,7 @@ var BlueWhale = function () {
 
 	var _onData = function (e, data) {
 		$('html').addClass('loaded');
-		$(document).on('videoended', _onClose);
+		$(document).on('videoended', _onVideoEnded);
 
 		_initIdleTimer();
 		_initTranslate(data);
