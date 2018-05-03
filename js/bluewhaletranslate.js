@@ -50,7 +50,7 @@ var BlueWhaleTranslate = function (data) {
 		$.each(data.misc[0].labels, function (i, obj) {
 			var id = obj.machine_id.safe_value;
 
-			$('h1[machine_id="' + id + '"], div[machine_id="' + id + '"]').each(function () {
+			$('*[machine_id="' + id + '"]').each(function () {
 				var el = $(this);
 
 				$.each(_languages, function (j, lg) {
