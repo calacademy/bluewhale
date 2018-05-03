@@ -4,9 +4,10 @@ var BlueWhaleModel = function () {
 	var _timeout = 60000;
 
 	var _data = {
-		'slides': 'skull-wall-slides',
-		'specimens': 'skull-wall-specimens',
-		'misc': 'skull-wall-misc'
+		'carousel': 'blue-whale-carousel',
+		'credits': 'blue-whale-credits',
+		'hotspots': 'blue-whale-hotspots',
+		'misc': 'blue-whale-misc'
 	};
 
 	var _onSuccess = function () {
@@ -23,26 +24,8 @@ var BlueWhaleModel = function () {
 		return str.replace(/\s/g, '-');
 	}
 
-	var _getSluggifiedData = function (key, data) {
-		$.each(data, function (i, obj) {
-			if (obj.title_en) {
-				obj.slug = _getSlug(obj.title_en);
-			} else {
-				obj.slug = _getSlug(obj.title);	
-			}
-
-			if (obj.buttons) {
-				$.each(obj.buttons, function (i, btn) {
-					btn.slug = _getSlug(btn.en.safe_value);
-				});
-			}
-		});
-
-		return data;
-	}
-
 	var _onData = function (key, data) {
-		_data[key] = _getSluggifiedData(key, data);
+		_data[key] = data;
 
 		var success = true;
 

@@ -9,6 +9,7 @@ var BlueWhale = function () {
 	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _media = new BlueWhaleMedia();
 	var _carousel;
+	var _data;
 	
 	var _animations = {
 		water: new FrameAnimation($('#water'), 300, 'images/animations/background/background_v15_'),
@@ -192,8 +193,11 @@ var BlueWhale = function () {
 				}
 
 				_onLegendClose();
+				
 				$('.cta').removeClass('hide');
+				$('html').removeClass('show-close');
 				$('html').addClass('attract');
+
 				$('#attract video').get(0).play();
 				break;
 			case 'credits':
@@ -383,12 +387,34 @@ var BlueWhale = function () {
 		$('.nav').on(_selectEvent, _onButtonNav);
 	}
 
+	var _onDataError = function () {
+		$(document).off('bluewhalemodel');
+		$('#loading h1').html('This exhibit is being updated.');
+	}
+
 	var _onData = function (e, data) {
+		_data = data;
+		$('html').addClass('data-loaded');
+
+		if ($('html').hasClass('content-loaded')) {
+			_start();	
+		}
+	}
+
+	var _onLoad = function () {
+		$('html').addClass('content-loaded');
+
+		if ($('html').hasClass('data-loaded')) {
+			_start();	
+		}
+	}
+
+	var _start = function () {
 		$('html').addClass('loaded');
 		$(document).on('videoended', _onVideoEnded);
 
 		_initIdleTimer();
-		_initTranslate(data);
+		_initTranslate(_data);
 		_initNav();
 
 		// start animations
@@ -402,30 +428,23 @@ var BlueWhale = function () {
 		$(document).idleTimer('toggle');
 	}
 
-	var _onDataError = function () {
-		$(document).off('bluewhalemodel');
-		$('#loading h1').html('This exhibit is being updated.');
-	}
-
 	this.initialize = function () {
 		// add extra bus image
 		var clone = $('#bus-frames .container img').last().clone();
 		$('#bus-frames .container').append(clone);
 
-		$(document).off('bluewhalemodel');
-		$(document).on('bluewhalemodel.error', _onDataError);
-		$(document).on('bluewhalemodel.success', _onData);
-
+		// preload chinese glyphs
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
 
-		// @todo
-		// CMS data load
-		// var foo = new BlueWhaleModel();
-		
-		$(window).on('load', function () {
-			$(document).trigger('bluewhalemodel.success');
-		});
+		// listen for load events
+		$(document).off('bluewhalemodel');
+		$(document).on('bluewhalemodel.error', _onDataError);
+		$(document).on('bluewhalemodel.success', _onData);
+		$(window).on('load', _onLoad);
+
+		// start loading data
+		var foo = new BlueWhaleModel();
 	}
 
 	this.initialize();
