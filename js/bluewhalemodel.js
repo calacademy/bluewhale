@@ -18,12 +18,6 @@ var BlueWhaleModel = function () {
 		$(document).trigger('bluewhalemodel.error');
 	}
 
-	var _getSlug = function (str) {
-		str = $.trim(str).toLowerCase();
-		str = str.replace(/[^0-9a-z\s]/gi, '');
-		return str.replace(/\s/g, '-');
-	}
-
 	var _onData = function (key, data) {
 		_data[key] = data;
 

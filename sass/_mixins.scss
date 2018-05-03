@@ -59,16 +59,7 @@
 	}
 }
 
-@mixin h4($multiLine: false) {
-	font-size: 20px;
-	line-height: 1;
-
-	@if $multiLine {
-		line-height: 22px;
-	}
-}
-
 @mixin body {
-	font-size: 18px;
-	line-height: 22px;
+	font-size: 20px;
+	line-height: 24px;
 }

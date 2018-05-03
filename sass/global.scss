@@ -263,18 +263,25 @@ body {
 
 				.container {
 					ul {
-						width: 50%;
-						float: left;
+						position: absolute;
+						width: 660px;
+
+						&:nth-child(1) {
+							left: 200px;
+						}
+						&:nth-child(2) {
+							left: 1130px;
+						}
 
 						li {
-							margin-bottom: 30px;
+							margin-bottom: 50px;
 
-							h2 {
+							h2 > div {
 								@include h2;
 								margin-bottom: 15px;
 							}
 
-							div {
+							div > div {
 								@include body;
 								width: 75%;
 							}
@@ -396,7 +403,7 @@ body {
 
 							p {
 								font-weight: $book;
-								@include h4;
+								@include body;
 							}
 
 							@include transition(

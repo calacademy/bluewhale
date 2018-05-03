@@ -353,8 +353,8 @@ var BlueWhale = function () {
 		_onSlideBefore();
 	}
 
-	var _initTranslate = function (data) {
-		_translate = new BlueWhaleTranslate(data);
+	var _initTranslate = function () {
+		_translate = new BlueWhaleTranslate(_data);
 	}
 
 	var _initIdleTimer = function () {
@@ -414,7 +414,7 @@ var BlueWhale = function () {
 		$(document).on('videoended', _onVideoEnded);
 
 		_initIdleTimer();
-		_initTranslate(_data);
+		_initTranslate();
 		_initNav();
 
 		// start animations
