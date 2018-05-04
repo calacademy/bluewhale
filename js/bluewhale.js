@@ -410,6 +410,8 @@ var BlueWhale = function () {
 	}
 
 	var _start = function () {
+		if ($('html').hasClass('loaded')) return;
+		
 		$('html').addClass('loaded');
 		$(document).on('videoended', _onVideoEnded);
 
