@@ -23,7 +23,14 @@
 }
 
 @mixin h1($multiLine: false, $mega: false) {
-	font-family: 'Whitney Narrow';
+	&, div {
+		font-family: 'Whitney Narrow';
+	}
+
+	.cn {
+		font-family: 'HanSans';
+	}
+	
 	line-height: 1;
 
 	@if $mega {

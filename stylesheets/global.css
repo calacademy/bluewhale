@@ -563,11 +563,18 @@ body #root section.open {
 }
 /* line 240, ../sass/global.scss */
 body #root section h1 {
-  font-family: 'Whitney Narrow';
   line-height: 1;
   font-size: 50px;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+/* line 26, ../sass/_mixins.scss */
+body #root section h1, body #root section h1 div {
+  font-family: 'Whitney Narrow';
+}
+/* line 30, ../sass/_mixins.scss */
+body #root section h1 .cn {
+  font-family: 'HanSans';
 }
 /* line 247, ../sass/global.scss */
 body #root section#credits {
@@ -934,10 +941,17 @@ body #root section#whale {
 }
 /* line 583, ../sass/global.scss */
 body #root section#whale h1 {
-  font-family: 'Whitney Narrow';
   line-height: 1;
   font-size: 60px;
   margin-left: 60px;
+}
+/* line 26, ../sass/_mixins.scss */
+body #root section#whale h1, body #root section#whale h1 div {
+  font-family: 'Whitney Narrow';
+}
+/* line 30, ../sass/_mixins.scss */
+body #root section#whale h1 .cn {
+  font-family: 'HanSans';
 }
 /* line 588, ../sass/global.scss */
 body #root section#whale .nav {
