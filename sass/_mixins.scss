@@ -59,7 +59,12 @@
 	}
 }
 
-@mixin body {
+@mixin body($smaller: false) {
 	font-size: 20px;
 	line-height: 24px;
+
+	@if $smaller {
+		font-size: 18px;
+		line-height: 20px;
+	}
 }

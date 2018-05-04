@@ -397,12 +397,17 @@ body {
 								@include border-radius($dim / 2);
 								width: $dim;
 								height: $dim;
-								margin-bottom: $padding / 2;
+								margin-bottom: ($padding / 2) - 5px;
 							}
 
 							p {
 								font-weight: $book;
 								@include body;
+
+								html[lang="tl"] &,
+								html[lang="es"] & {
+									@include body(true);
+								}
 							}
 
 							@include transition(
@@ -428,9 +433,9 @@ body {
 								content: '';
 								position: absolute;
 								top: 0;
-								left: 0;
+								left: 20px;
 								bottom: 0;
-								right: 0;
+								right: 20px;
 								z-index: -1;
 								background-color: $black;
 							}
@@ -593,6 +598,11 @@ body {
 
 					.copy {
 						padding-right: $padding;
+
+						html[lang="tl"] &,
+						html[lang="es"] & {
+							padding-right: 10px;
+						}
 					}
 
 					.point {
