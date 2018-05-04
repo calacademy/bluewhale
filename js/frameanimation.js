@@ -5,6 +5,10 @@ var FrameAnimation = function (container, numFrames, prefix) {
 		if (num >= 100) return '00' + num;
 	}
 	
+	var _onError = function () {
+		$(document).trigger('imgerror');
+	}
+
 	this.stop = function () {
 		container.removeClass('animate');
 	}
@@ -22,7 +26,8 @@ var FrameAnimation = function (container, numFrames, prefix) {
 		while (i < numFrames) {
 			var frame = _getPaddedNum(i);
 			var img = $('<img />');
-			
+			img.on('error', _onError);
+
 			img.attr('src', prefix + frame + '.png');
 
 			div.append(img);

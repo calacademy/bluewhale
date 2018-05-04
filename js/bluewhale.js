@@ -387,8 +387,11 @@ var BlueWhale = function () {
 		$('.nav').on(_selectEvent, _onButtonNav);
 	}
 
-	var _onDataError = function () {
+	var _onError = function () {
+		$(document).off('imgerror');
+		$(window).off('load');
 		$(document).off('bluewhalemodel');
+
 		$('#loading h1').html('This exhibit is being updated.');
 	}
 
@@ -441,8 +444,10 @@ var BlueWhale = function () {
 
 		// listen for load events
 		$(document).off('bluewhalemodel');
-		$(document).on('bluewhalemodel.error', _onDataError);
+		$(document).on('bluewhalemodel.error', _onError);
 		$(document).on('bluewhalemodel.success', _onData);
+		
+		$(document).on('imgerror', _onError);
 		$(window).on('load', _onLoad);
 
 		// start loading data
