@@ -8,6 +8,7 @@ var BlueWhale = function () {
 	var _overEvent = Modernizr.touch ? 'touchstart' : 'mouseover';
 	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _media = new BlueWhaleMedia();
+	var _translate;
 	var _carousel;
 	var _data;
 	var _animations;
