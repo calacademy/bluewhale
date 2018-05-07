@@ -8,6 +8,8 @@ var BlueWhale = function () {
 	var _overEvent = Modernizr.touch ? 'touchstart' : 'mouseover';
 	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _media = new BlueWhaleMedia();
+	var _currentSlide = 0;
+	var _lastSection;
 	var _translate;
 	var _carousel;
 	var _data;
@@ -179,6 +181,8 @@ var BlueWhale = function () {
 		$('html').removeClass('attract');
 		$('#attract video').get(0).pause();
 		$('#btn-credits').removeClass('highlight');
+		
+		_lastSection = $('html').attr('active-section');
 		$('html').attr('active-section', section);
 
 		switch (section) {
@@ -219,7 +223,17 @@ var BlueWhale = function () {
 		$('section').removeClass('open');
 		_media.destroy();
 
-		_onNav('whale');
+		// default to home
+		var targetSection = 'whale';
+		
+		// if closing credits, go to last open section
+		if ($('html').attr('active-section') == 'credits') {
+			if (_lastSection) {
+				targetSection = _lastSection;
+			}
+		}
+
+		_onNav(targetSection);
 		
 		return false;
 	}
@@ -251,6 +265,7 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
+		_currentSlide = newIndex;
 		$('html').removeClass('carousel-edge');
 
 		var mid = $('.mid-slide');
@@ -311,10 +326,10 @@ var BlueWhale = function () {
 	}
 
 	var _initCarousel = function () {
-		$('html').removeClass('carousel-edge');
+		// $('html').removeClass('carousel-edge');
 
 		if (_carousel) {
-			_carousel.jumpToSlide(0);
+			_carousel.jumpToSlide(_currentSlide);
 			return;
 		}
 
@@ -365,6 +380,9 @@ var BlueWhale = function () {
 			}
 			
 			console.log('idle');
+			
+			_currentSlide = 0;
+			_lastSection = null;
 			_onNav('attract');
     	});
 
