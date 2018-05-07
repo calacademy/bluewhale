@@ -581,8 +581,14 @@ body {
 				$padding: 60px;
 
 				h1 {
+					position: absolute;
 					@include h1(false, true);
-					margin-left: $padding;	
+					margin-left: $padding;
+
+					.tl {
+						width: 600px;
+						line-height: 58px;
+					}	
 				}
 
 				.nav {

@@ -941,6 +941,7 @@ body #root section#whale {
 }
 /* line 583, ../sass/global.scss */
 body #root section#whale h1 {
+  position: absolute;
   line-height: 1;
   font-size: 60px;
   margin-left: 60px;
@@ -954,6 +955,11 @@ body #root section#whale h1 .cn {
   font-family: 'HanSans';
 }
 /* line 588, ../sass/global.scss */
+body #root section#whale h1 .tl {
+  width: 600px;
+  line-height: 58px;
+}
+/* line 594, ../sass/global.scss */
 body #root section#whale .nav {
   position: absolute;
   left: 60px;
@@ -965,29 +971,29 @@ body #root section#whale .nav {
   padding: 10px;
   text-align: left;
 }
-/* line 599, ../sass/global.scss */
+/* line 605, ../sass/global.scss */
 body #root section#whale .nav .copy {
   padding-right: 60px;
 }
-/* line 602, ../sass/global.scss */
+/* line 608, ../sass/global.scss */
 html[lang="tl"] body #root section#whale .nav .copy, html[lang="es"] body #root section#whale .nav .copy {
   padding-right: 10px;
 }
-/* line 608, ../sass/global.scss */
+/* line 614, ../sass/global.scss */
 body #root section#whale .nav .point {
   margin-right: 10px;
   margin-top: 5px;
 }
-/* line 613, ../sass/global.scss */
+/* line 619, ../sass/global.scss */
 body #root section#whale .nav > div {
   float: left;
 }
-/* line 618, ../sass/global.scss */
+/* line 624, ../sass/global.scss */
 body #root section#whale .nav,
 body #root section#whale #points > div {
   cursor: pointer;
 }
-/* line 623, ../sass/global.scss */
+/* line 629, ../sass/global.scss */
 body #root section#whale .nav div.point,
 body #root section#whale #points > div {
   display: block;
@@ -1008,7 +1014,7 @@ body #root section#whale #points > div {
   -webkit-transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 627, ../sass/global.scss */
+/* line 633, ../sass/global.scss */
 body #root section#whale .nav div.point, body #root section#whale .nav div.point div,
 body #root section#whale #points > div,
 body #root section#whale #points > div div {
@@ -1017,7 +1023,7 @@ body #root section#whale #points > div div {
   box-sizing: border-box;
   position: relative;
 }
-/* line 645, ../sass/global.scss */
+/* line 651, ../sass/global.scss */
 body #root section#whale .nav div.point div,
 body #root section#whale #points > div div {
   padding: 0;
@@ -1037,7 +1043,7 @@ body #root section#whale #points > div div {
   transform: scale3d(0.6, 0.6, 0.6);
   background-color: #ffffff;
 }
-/* line 668, ../sass/global.scss */
+/* line 674, ../sass/global.scss */
 body #root section#whale .nav div.point.selected div,
 body #root section#whale #points > div.selected div {
   -moz-transform: scale3d(1, 1, 1);
@@ -1046,17 +1052,17 @@ body #root section#whale #points > div.selected div {
   transform: scale3d(1, 1, 1);
   background-color: #003a70;
 }
-/* line 673, ../sass/global.scss */
+/* line 679, ../sass/global.scss */
 body #root section#whale .nav div.point.selected.hide-on-select,
 body #root section#whale #points > div.selected.hide-on-select {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 680, ../sass/global.scss */
+/* line 686, ../sass/global.scss */
 body #root section#whale #points > div {
   overflow: visible;
 }
-/* line 683, ../sass/global.scss */
+/* line 689, ../sass/global.scss */
 body #root section#whale #points > div:after {
   content: '';
   position: absolute;
@@ -1066,7 +1072,7 @@ body #root section#whale #points > div:after {
   height: 100px;
   background-color: transparent;
 }
-/* line 696, ../sass/global.scss */
+/* line 702, ../sass/global.scss */
 body #root section#whale .nav.highlight div.point div {
   -moz-transform: scale3d(1, 1, 1);
   -ms-transform: scale3d(1, 1, 1);
@@ -1074,7 +1080,7 @@ body #root section#whale .nav.highlight div.point div {
   transform: scale3d(1, 1, 1);
   background-color: #003a70;
 }
-/* line 704, ../sass/global.scss */
+/* line 710, ../sass/global.scss */
 body #root section#whale #legend button {
   cursor: hand;
   cursor: pointer;
@@ -1088,7 +1094,7 @@ body #root section#whale #legend button.highlight {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 708, ../sass/global.scss */
+/* line 714, ../sass/global.scss */
 body #root section#whale #legend > div {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1106,23 +1112,23 @@ body #root section#whale #legend > div {
   position: absolute;
   background-color: #ffffff;
 }
-/* line 715, ../sass/global.scss */
+/* line 721, ../sass/global.scss */
 body #root section#whale #legend > div.open {
   display: block;
 }
-/* line 729, ../sass/global.scss */
+/* line 735, ../sass/global.scss */
 body #root section#whale #legend > div img,
 body #root section#whale #legend > div .btn-play {
   width: 222px;
   height: 222px;
 }
-/* line 735, ../sass/global.scss */
+/* line 741, ../sass/global.scss */
 body #root section#whale #legend > div img {
   float: left;
   margin-right: 15px;
   position: relative;
 }
-/* line 741, ../sass/global.scss */
+/* line 747, ../sass/global.scss */
 body #root section#whale #legend > div .btn-play {
   z-index: 2;
   position: absolute;
@@ -1138,7 +1144,7 @@ body #root section#whale #legend > div .btn-play {
   -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
 }
-/* line 753, ../sass/global.scss */
+/* line 759, ../sass/global.scss */
 body #root section#whale #legend > div .btn-close {
   position: absolute;
   top: 0;
@@ -1153,22 +1159,22 @@ body #root section#whale #legend > div .btn-close {
   -webkit-background-size: 15px 15px;
   background-size: 15px 15px;
 }
-/* line 765, ../sass/global.scss */
+/* line 771, ../sass/global.scss */
 body #root section#whale #legend > div h2, body #root section#whale #legend > div > div {
   margin: 15px;
 }
-/* line 769, ../sass/global.scss */
+/* line 775, ../sass/global.scss */
 body #root section#whale #legend > div h2 {
   font-weight: 600;
   font-size: 30px;
   line-height: 1;
 }
-/* line 774, ../sass/global.scss */
+/* line 780, ../sass/global.scss */
 body #root section#whale #legend > div.no-img {
   min-height: initial;
   width: 590px;
 }
-/* line 780, ../sass/global.scss */
+/* line 786, ../sass/global.scss */
 body #root section#whale #legend > div.with-img .copy {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1178,17 +1184,17 @@ body #root section#whale #legend > div.with-img .copy {
   margin-bottom: 15px;
   width: calc(100% - 248px);
 }
-/* line 789, ../sass/global.scss */
+/* line 795, ../sass/global.scss */
 body #root section#whale #legend > div h2,
 body #root section#whale #legend > div p {
   color: #003a70;
 }
-/* line 794, ../sass/global.scss */
+/* line 800, ../sass/global.scss */
 body #root section#whale #legend > div p {
   font-size: 20px;
   line-height: 24px;
 }
-/* line 800, ../sass/global.scss */
+/* line 806, ../sass/global.scss */
 body #root section#whale #legend > div .arrow {
   position: absolute;
   margin: 0;
@@ -1199,54 +1205,54 @@ body #root section#whale #legend > div .arrow {
   -webkit-clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 50% 0%);
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 50% 0%);
 }
-/* line 817, ../sass/global.scss */
+/* line 823, ../sass/global.scss */
 body #root section#whale #legend > div.left .arrow {
   -webkit-clip-path: polygon(100% 0%, 100% 100%, 0% 50%, 100% 0%);
   clip-path: polygon(100% 0%, 100% 100%, 0% 50%, 100% 0%);
   top: 0;
   left: -75px;
 }
-/* line 825, ../sass/global.scss */
+/* line 831, ../sass/global.scss */
 body #root section#whale #legend > div.bottom .arrow {
   -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%);
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%);
   top: 230px;
 }
-/* line 831, ../sass/global.scss */
+/* line 837, ../sass/global.scss */
 body #root section#whale #legend > div.bottom.no-img .arrow {
   top: auto;
 }
-/* line 837, ../sass/global.scss */
+/* line 843, ../sass/global.scss */
 body #root section#whale #legend > div#blowhole .arrow {
   left: 90px;
 }
-/* line 842, ../sass/global.scss */
+/* line 848, ../sass/global.scss */
 body #root section#whale #legend > div#mouth .arrow {
   left: 44px;
 }
-/* line 847, ../sass/global.scss */
+/* line 853, ../sass/global.scss */
 body #root section#whale #legend > div#appetite .arrow {
   top: 155px;
 }
-/* line 852, ../sass/global.scss */
+/* line 858, ../sass/global.scss */
 body #root section#whale #legend > div#heart .arrow {
   left: 88px;
 }
-/* line 857, ../sass/global.scss */
+/* line 863, ../sass/global.scss */
 body #root section#whale #legend > div#size .arrow {
   left: 92px;
 }
-/* line 862, ../sass/global.scss */
+/* line 868, ../sass/global.scss */
 body #root section#whale #legend > div#speed .arrow {
   right: 124px;
 }
-/* line 869, ../sass/global.scss */
+/* line 875, ../sass/global.scss */
 body #root section#whale .legend-frames,
 body #root section#whale #whale-frames {
   z-index: -1;
   position: absolute;
 }
-/* line 875, ../sass/global.scss */
+/* line 881, ../sass/global.scss */
 body #root section#whale .legend-frames {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -1255,19 +1261,19 @@ body #root section#whale .legend-frames {
   -webkit-transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 879, ../sass/global.scss */
+/* line 885, ../sass/global.scss */
 body #root section#whale .legend-frames.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 884, ../sass/global.scss */
+/* line 890, ../sass/global.scss */
 body #root section#whale #bus-frames {
   width: 1400px;
   height: 200px;
   bottom: 150px;
   right: 60px;
 }
-/* line 892, ../sass/global.scss */
+/* line 898, ../sass/global.scss */
 body #root section#whale #bus-frames.active .container {
   -moz-animation: bus 10s steps(300) forwards;
   -webkit-animation: bus 10s steps(300) forwards;
@@ -1276,7 +1282,7 @@ body #root section#whale #bus-frames.active .container {
   -webkit-animation-play-state: running;
   animation-play-state: running;
 }
-/* line 899, ../sass/global.scss */
+/* line 905, ../sass/global.scss */
 body #root section#whale #heart-frames,
 body #root section#whale #whale-frames {
   width: 1920px;
@@ -1284,25 +1290,25 @@ body #root section#whale #whale-frames {
   top: -45px;
   left: 0;
 }
-/* line 907, ../sass/global.scss */
+/* line 913, ../sass/global.scss */
 body #root section#whale #heart-frames .container,
 body #root section#whale #whale-frames .container {
   -moz-animation: whale 30s steps(900) infinite;
   -webkit-animation: whale 30s steps(900) infinite;
   animation: whale 30s steps(900) infinite;
 }
-/* line 912, ../sass/global.scss */
+/* line 918, ../sass/global.scss */
 body #root section#whale #heart-frames.animate .container,
 body #root section#whale #whale-frames.animate .container {
   -moz-animation-play-state: running;
   -webkit-animation-play-state: running;
   animation-play-state: running;
 }
-/* line 918, ../sass/global.scss */
+/* line 924, ../sass/global.scss */
 body #root section#whale #whale-frames {
   z-index: -2;
 }
-/* line 924, ../sass/global.scss */
+/* line 930, ../sass/global.scss */
 body #root #water {
   z-index: 1;
   position: absolute;
@@ -1311,13 +1317,13 @@ body #root #water {
   top: 0;
   left: 0;
 }
-/* line 935, ../sass/global.scss */
+/* line 941, ../sass/global.scss */
 body #root #water.animate .container {
   -moz-animation: water 10s steps(300) infinite;
   -webkit-animation: water 10s steps(300) infinite;
   animation: water 10s steps(300) infinite;
 }
-/* line 943, ../sass/global.scss */
+/* line 949, ../sass/global.scss */
 body #loading {
   position: absolute;
   display: table;
@@ -1328,7 +1334,7 @@ body #loading {
   bottom: 0;
   right: 0;
 }
-/* line 953, ../sass/global.scss */
+/* line 959, ../sass/global.scss */
 body #loading h1 {
   display: table-cell;
   vertical-align: middle;
@@ -1338,38 +1344,38 @@ body #loading h1 {
   color: #ffffff;
   padding-bottom: 30px;
 }
-/* line 964, ../sass/global.scss */
+/* line 970, ../sass/global.scss */
 body #root {
   display: none;
 }
-/* line 969, ../sass/global.scss */
+/* line 975, ../sass/global.scss */
 .loaded body #loading {
   display: none;
 }
-/* line 973, ../sass/global.scss */
+/* line 979, ../sass/global.scss */
 .loaded body #root {
   display: block;
 }
-/* line 979, ../sass/global.scss */
+/* line 985, ../sass/global.scss */
 body .en, body .cn, body .tl, body .es {
   display: none !important;
   -moz-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 986, ../sass/global.scss */
+/* line 992, ../sass/global.scss */
 html[lang="en"] body .en {
   display: block !important;
 }
-/* line 986, ../sass/global.scss */
+/* line 992, ../sass/global.scss */
 html[lang="cn"] body .cn {
   display: block !important;
 }
-/* line 986, ../sass/global.scss */
+/* line 992, ../sass/global.scss */
 html[lang="tl"] body .tl {
   display: block !important;
 }
-/* line 986, ../sass/global.scss */
+/* line 992, ../sass/global.scss */
 html[lang="es"] body .es {
   display: block !important;
 }
