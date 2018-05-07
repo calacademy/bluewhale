@@ -10,13 +10,7 @@ var BlueWhale = function () {
 	var _media = new BlueWhaleMedia();
 	var _carousel;
 	var _data;
-	
-	var _animations = {
-		water: new FrameAnimation($('#water'), 300, 'images/animations/background/background_v15_'),
-		whale: new FrameAnimation($('#whale-frames'), 900, 'images/animations/whale/whale_krill_v15_'),
-		bus: new FrameAnimation($('#bus-frames'), 300, 'images/animations/bus/bus_v15_'),
-		heart: new FrameAnimation($('#heart-frames'), 900, 'images/animations/heartCar/heartCar_v15_')
-	};
+	var _animations;
 
 	var _configPositions = function (els) {
 		els.show();
@@ -434,14 +428,6 @@ var BlueWhale = function () {
 	}
 
 	this.initialize = function () {
-		// add extra bus image
-		var clone = $('#bus-frames .container img').last().clone();
-		$('#bus-frames .container').append(clone);
-
-		// preload chinese glyphs
-		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
-		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
-
 		// listen for load events
 		$(document).off('bluewhalemodel');
 		$(document).on('bluewhalemodel.error', _onError);
@@ -450,7 +436,23 @@ var BlueWhale = function () {
 		$(document).on('imgerror', _onError);
 		$(window).on('load', _onLoad);
 
-		// start loading data
+		// chinese glyphs
+		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
+		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
+
+		// animations
+		_animations = {
+			water: new FrameAnimation($('#water'), 300, 'images/animations/background/background_v15_'),
+			whale: new FrameAnimation($('#whale-frames'), 900, 'images/animations/whale/whale_krill_v15_'),
+			bus: new FrameAnimation($('#bus-frames'), 300, 'images/animations/bus/bus_v15_'),
+			heart: new FrameAnimation($('#heart-frames'), 900, 'images/animations/heartCar/heartCar_v15_')
+		};
+
+		// extra bus image
+		var clone = $('#bus-frames .container img').last().clone();
+		$('#bus-frames .container').append(clone);
+
+		// data
 		var foo = new BlueWhaleModel();
 	}
 
