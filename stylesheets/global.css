@@ -663,7 +663,7 @@ body #root section#media-overlay {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 /* line 328, ../sass/global.scss */
 body #root section#media-overlay video {
