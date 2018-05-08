@@ -592,38 +592,50 @@ body #root section#credits {
 }
 /* line 259, ../sass/global.scss */
 body #root section#credits h1 {
+  line-height: 1;
+  font-size: 50px;
   text-align: center;
   margin-bottom: 40px;
+  font-weight: 500;
 }
-/* line 265, ../sass/global.scss */
+/* line 26, ../sass/_mixins.scss */
+body #root section#credits h1, body #root section#credits h1 div {
+  font-family: 'Whitney Narrow';
+}
+/* line 30, ../sass/_mixins.scss */
+body #root section#credits h1 .cn {
+  font-family: 'HanSans';
+}
+/* line 267, ../sass/global.scss */
 body #root section#credits .container ul {
   position: absolute;
   width: 660px;
 }
-/* line 269, ../sass/global.scss */
+/* line 271, ../sass/global.scss */
 body #root section#credits .container ul:nth-child(1) {
   left: 200px;
 }
-/* line 272, ../sass/global.scss */
+/* line 274, ../sass/global.scss */
 body #root section#credits .container ul:nth-child(2) {
   left: 1130px;
 }
-/* line 276, ../sass/global.scss */
+/* line 278, ../sass/global.scss */
 body #root section#credits .container ul li {
   margin-bottom: 50px;
 }
-/* line 279, ../sass/global.scss */
+/* line 281, ../sass/global.scss */
 body #root section#credits .container ul li h2 > div {
   font-size: 30px;
   line-height: 1;
+  font-weight: 500;
   margin-bottom: 15px;
 }
-/* line 284, ../sass/global.scss */
+/* line 287, ../sass/global.scss */
 body #root section#credits .container ul li div > div {
   font-size: 20px;
   line-height: 24px;
 }
-/* line 293, ../sass/global.scss */
+/* line 296, ../sass/global.scss */
 body #root section#attract header {
   position: absolute;
   top: 30px;
@@ -632,18 +644,18 @@ body #root section#attract header {
   margin: 0;
   padding: 0;
 }
-/* line 302, ../sass/global.scss */
+/* line 305, ../sass/global.scss */
 body #root section#attract header img {
   display: block;
 }
-/* line 307, ../sass/global.scss */
+/* line 310, ../sass/global.scss */
 body #root section#attract video {
   z-index: 1;
   margin-top: -45px;
   width: 1920px;
   height: 1080px;
 }
-/* line 315, ../sass/global.scss */
+/* line 318, ../sass/global.scss */
 body #root section#media-overlay {
   z-index: 4;
   position: absolute;
@@ -653,7 +665,7 @@ body #root section#media-overlay {
   bottom: 0;
   background-color: #ffffff;
 }
-/* line 325, ../sass/global.scss */
+/* line 328, ../sass/global.scss */
 body #root section#media-overlay video {
   z-index: 1;
   -moz-animation: fade-in 2s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -662,7 +674,7 @@ body #root section#media-overlay video {
   width: 1920px;
   height: 1080px;
 }
-/* line 332, ../sass/global.scss */
+/* line 335, ../sass/global.scss */
 body #root section#media-overlay .progress-indicator {
   z-index: 2;
   position: absolute;
@@ -675,7 +687,7 @@ body #root section#media-overlay .progress-indicator {
   top: 20px;
   right: 20px;
 }
-/* line 341, ../sass/global.scss */
+/* line 344, ../sass/global.scss */
 body #root section#media-overlay .progress-indicator svg {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -684,45 +696,45 @@ body #root section#media-overlay .progress-indicator svg {
   width: 50px;
   height: 50px;
 }
-/* line 347, ../sass/global.scss */
+/* line 350, ../sass/global.scss */
 body #root section#media-overlay .progress-indicator svg circle {
   fill: none;
 }
-/* line 350, ../sass/global.scss */
+/* line 353, ../sass/global.scss */
 body #root section#media-overlay .progress-indicator svg circle.progress {
   stroke: #ffffff;
   stroke-width: 6;
 }
-/* line 354, ../sass/global.scss */
+/* line 357, ../sass/global.scss */
 body #root section#media-overlay .progress-indicator svg circle.bg {
   stroke: #000000;
   stroke-width: 2;
 }
-/* line 368, ../sass/global.scss */
+/* line 371, ../sass/global.scss */
 body #root section#slideshow h1,
 body #root section#slideshow .bx-controls > div {
   width: 1920px;
 }
-/* line 373, ../sass/global.scss */
+/* line 376, ../sass/global.scss */
 body #root section#slideshow h1 {
   font-weight: 600;
   text-align: center;
   margin-top: 35px;
   margin-bottom: 40px;
 }
-/* line 380, ../sass/global.scss */
+/* line 383, ../sass/global.scss */
 body #root section#slideshow .slides {
   width: 100%;
 }
-/* line 383, ../sass/global.scss */
+/* line 386, ../sass/global.scss */
 body #root section#slideshow .slides, body #root section#slideshow .slides > li {
   height: 800px;
 }
-/* line 387, ../sass/global.scss */
+/* line 390, ../sass/global.scss */
 body #root section#slideshow .slides > li {
   width: 384px;
 }
-/* line 390, ../sass/global.scss */
+/* line 393, ../sass/global.scss */
 body #root section#slideshow .slides > li .container {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -735,7 +747,7 @@ body #root section#slideshow .slides > li .container {
   transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   transform-origin: 50% 50%;
 }
-/* line 395, ../sass/global.scss */
+/* line 398, ../sass/global.scss */
 body #root section#slideshow .slides > li .container img {
   -moz-border-radius: 142px;
   -webkit-border-radius: 142px;
@@ -744,32 +756,32 @@ body #root section#slideshow .slides > li .container img {
   height: 284px;
   margin-bottom: 20px;
 }
-/* line 403, ../sass/global.scss */
+/* line 406, ../sass/global.scss */
 body #root section#slideshow .slides > li .container p {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
 }
-/* line 407, ../sass/global.scss */
+/* line 410, ../sass/global.scss */
 html[lang="tl"] body #root section#slideshow .slides > li .container p, html[lang="es"] body #root section#slideshow .slides > li .container p {
   font-size: 20px;
   line-height: 24px;
   font-size: 18px;
   line-height: 20px;
 }
-/* line 420, ../sass/global.scss */
+/* line 423, ../sass/global.scss */
 body #root section#slideshow .slides > li .container > div, body #root section#slideshow .slides > li .container:after {
   -moz-transition: opacity 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
   -o-transition: opacity 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-transition: opacity 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 427, ../sass/global.scss */
+/* line 430, ../sass/global.scss */
 body #root section#slideshow .slides > li .container > div, body #root section#slideshow .slides > li .container:after {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 432, ../sass/global.scss */
+/* line 435, ../sass/global.scss */
 body #root section#slideshow .slides > li .container:after {
   content: '';
   position: absolute;
@@ -780,7 +792,7 @@ body #root section#slideshow .slides > li .container:after {
   z-index: -1;
   background-color: #000000;
 }
-/* line 449, ../sass/global.scss */
+/* line 452, ../sass/global.scss */
 body #root section#slideshow .slides > li .container, body #root section#slideshow .slides > li.slide-prev-prev .container, body #root section#slideshow .slides > li.slide-next-next .container {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
   opacity: 0.25;
@@ -789,25 +801,25 @@ body #root section#slideshow .slides > li .container, body #root section#slidesh
   -webkit-transform: scale3d(0.6, 0.6, 1);
   transform: scale3d(0.6, 0.6, 1);
 }
-/* line 456, ../sass/global.scss */
+/* line 459, ../sass/global.scss */
 body #root section#slideshow .slides > li.slide-prev-prev .container {
   -moz-transform: scale3d(0.6, 0.6, 1) translateX(-325px);
   -ms-transform: scale3d(0.6, 0.6, 1) translateX(-325px);
   -webkit-transform: scale3d(0.6, 0.6, 1) translateX(-325px);
   transform: scale3d(0.6, 0.6, 1) translateX(-325px);
 }
-/* line 461, ../sass/global.scss */
+/* line 464, ../sass/global.scss */
 body #root section#slideshow .slides > li.slide-next-next .container {
   -moz-transform: scale3d(0.6, 0.6, 1) translateX(325px);
   -ms-transform: scale3d(0.6, 0.6, 1) translateX(325px);
   -webkit-transform: scale3d(0.6, 0.6, 1) translateX(325px);
   transform: scale3d(0.6, 0.6, 1) translateX(325px);
 }
-/* line 466, ../sass/global.scss */
+/* line 469, ../sass/global.scss */
 body #root section#slideshow .slides > li.slide-prev, body #root section#slideshow .slides > li.slide-next {
   z-index: 999;
 }
-/* line 470, ../sass/global.scss */
+/* line 473, ../sass/global.scss */
 body #root section#slideshow .slides > li.slide-prev .container, body #root section#slideshow .slides > li.slide-next .container {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
   opacity: 0.75;
@@ -816,25 +828,25 @@ body #root section#slideshow .slides > li.slide-prev .container, body #root sect
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
 }
-/* line 477, ../sass/global.scss */
+/* line 480, ../sass/global.scss */
 body #root section#slideshow .slides > li.slide-prev .container {
   -moz-transform: translateX(-225px);
   -ms-transform: translateX(-225px);
   -webkit-transform: translateX(-225px);
   transform: translateX(-225px);
 }
-/* line 482, ../sass/global.scss */
+/* line 485, ../sass/global.scss */
 body #root section#slideshow .slides > li.slide-next .container {
   -moz-transform: translateX(225px);
   -ms-transform: translateX(225px);
   -webkit-transform: translateX(225px);
   transform: translateX(225px);
 }
-/* line 487, ../sass/global.scss */
+/* line 490, ../sass/global.scss */
 body #root section#slideshow .slides > li.mid-slide {
   z-index: 9999;
 }
-/* line 490, ../sass/global.scss */
+/* line 493, ../sass/global.scss */
 body #root section#slideshow .slides > li.mid-slide .container {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -843,17 +855,17 @@ body #root section#slideshow .slides > li.mid-slide .container {
   -webkit-transform: scale3d(1.75, 1.75, 1) translateX(0);
   transform: scale3d(1.75, 1.75, 1) translateX(0);
 }
-/* line 494, ../sass/global.scss */
+/* line 497, ../sass/global.scss */
 body #root section#slideshow .slides > li.mid-slide .container > div {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 497, ../sass/global.scss */
+/* line 500, ../sass/global.scss */
 body #root section#slideshow .slides > li.mid-slide .container:after {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 504, ../sass/global.scss */
+/* line 507, ../sass/global.scss */
 .carousel-edge body #root section#slideshow .slides > li .container,
 .carousel-edge body #root section#slideshow .slides > li .container > div,
 .carousel-edge body #root section#slideshow .slides > li .container:after {
@@ -862,24 +874,24 @@ body #root section#slideshow .slides > li.mid-slide .container:after {
   -webkit-transition-duration: 0s !important;
   transition-duration: 0s !important;
 }
-/* line 514, ../sass/global.scss */
+/* line 517, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-pager {
   pointer-events: none;
   z-index: 2;
   bottom: -50px;
 }
-/* line 520, ../sass/global.scss */
+/* line 523, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-pager div a {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
   background: rgba(255, 255, 255, 0.25);
 }
-/* line 524, ../sass/global.scss */
+/* line 527, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-pager div a.active {
   background: rgba(255, 255, 255, 0.75);
 }
-/* line 531, ../sass/global.scss */
+/* line 534, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-controls-direction {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -890,7 +902,7 @@ body #root section#slideshow .bx-wrapper .bx-controls-direction {
   z-index: 1;
   pointer-events: none;
 }
-/* line 541, ../sass/global.scss */
+/* line 544, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-controls-direction a {
   background: transparent;
   cursor: hand;
@@ -917,21 +929,21 @@ body #root section#slideshow .bx-wrapper .bx-controls-direction a.highlight {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 556, ../sass/global.scss */
+/* line 559, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-controls-direction a.bx-prev {
   float: left;
   left: 50px;
   background-image: url("../images/icons/previous-white.svg");
   background-position: center left;
 }
-/* line 562, ../sass/global.scss */
+/* line 565, ../sass/global.scss */
 body #root section#slideshow .bx-wrapper .bx-controls-direction a.bx-next {
   float: right;
   right: 50px;
   background-image: url("../images/icons/next-white.svg");
   background-position: center right;
 }
-/* line 573, ../sass/global.scss */
+/* line 576, ../sass/global.scss */
 body #root section#whale {
   width: 1920px;
   height: 1035px;
@@ -939,7 +951,7 @@ body #root section#whale {
   left: 0;
   position: absolute;
 }
-/* line 583, ../sass/global.scss */
+/* line 586, ../sass/global.scss */
 body #root section#whale h1 {
   position: absolute;
   line-height: 1;
@@ -954,12 +966,12 @@ body #root section#whale h1, body #root section#whale h1 div {
 body #root section#whale h1 .cn {
   font-family: 'HanSans';
 }
-/* line 588, ../sass/global.scss */
+/* line 591, ../sass/global.scss */
 body #root section#whale h1 .tl {
   width: 600px;
   line-height: 58px;
 }
-/* line 594, ../sass/global.scss */
+/* line 597, ../sass/global.scss */
 body #root section#whale .nav {
   position: absolute;
   left: 60px;
@@ -971,29 +983,29 @@ body #root section#whale .nav {
   padding: 10px;
   text-align: left;
 }
-/* line 605, ../sass/global.scss */
+/* line 608, ../sass/global.scss */
 body #root section#whale .nav .copy {
   padding-right: 60px;
 }
-/* line 608, ../sass/global.scss */
+/* line 611, ../sass/global.scss */
 html[lang="tl"] body #root section#whale .nav .copy, html[lang="es"] body #root section#whale .nav .copy {
   padding-right: 10px;
 }
-/* line 614, ../sass/global.scss */
+/* line 617, ../sass/global.scss */
 body #root section#whale .nav .point {
   margin-right: 10px;
   margin-top: 5px;
 }
-/* line 619, ../sass/global.scss */
+/* line 622, ../sass/global.scss */
 body #root section#whale .nav > div {
   float: left;
 }
-/* line 624, ../sass/global.scss */
+/* line 627, ../sass/global.scss */
 body #root section#whale .nav,
 body #root section#whale #points > div {
   cursor: pointer;
 }
-/* line 629, ../sass/global.scss */
+/* line 632, ../sass/global.scss */
 body #root section#whale .nav div.point,
 body #root section#whale #points > div {
   display: block;
@@ -1014,7 +1026,7 @@ body #root section#whale #points > div {
   -webkit-transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 633, ../sass/global.scss */
+/* line 636, ../sass/global.scss */
 body #root section#whale .nav div.point, body #root section#whale .nav div.point div,
 body #root section#whale #points > div,
 body #root section#whale #points > div div {
@@ -1023,7 +1035,7 @@ body #root section#whale #points > div div {
   box-sizing: border-box;
   position: relative;
 }
-/* line 651, ../sass/global.scss */
+/* line 654, ../sass/global.scss */
 body #root section#whale .nav div.point div,
 body #root section#whale #points > div div {
   padding: 0;
@@ -1043,7 +1055,7 @@ body #root section#whale #points > div div {
   transform: scale3d(0.6, 0.6, 0.6);
   background-color: #ffffff;
 }
-/* line 674, ../sass/global.scss */
+/* line 677, ../sass/global.scss */
 body #root section#whale .nav div.point.selected div,
 body #root section#whale #points > div.selected div {
   -moz-transform: scale3d(1, 1, 1);
@@ -1052,17 +1064,17 @@ body #root section#whale #points > div.selected div {
   transform: scale3d(1, 1, 1);
   background-color: #003a70;
 }
-/* line 679, ../sass/global.scss */
+/* line 682, ../sass/global.scss */
 body #root section#whale .nav div.point.selected.hide-on-select,
 body #root section#whale #points > div.selected.hide-on-select {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 686, ../sass/global.scss */
+/* line 689, ../sass/global.scss */
 body #root section#whale #points > div {
   overflow: visible;
 }
-/* line 689, ../sass/global.scss */
+/* line 692, ../sass/global.scss */
 body #root section#whale #points > div:after {
   content: '';
   position: absolute;
@@ -1072,7 +1084,7 @@ body #root section#whale #points > div:after {
   height: 100px;
   background-color: transparent;
 }
-/* line 702, ../sass/global.scss */
+/* line 705, ../sass/global.scss */
 body #root section#whale .nav.highlight div.point div {
   -moz-transform: scale3d(1, 1, 1);
   -ms-transform: scale3d(1, 1, 1);
@@ -1080,7 +1092,7 @@ body #root section#whale .nav.highlight div.point div {
   transform: scale3d(1, 1, 1);
   background-color: #003a70;
 }
-/* line 710, ../sass/global.scss */
+/* line 713, ../sass/global.scss */
 body #root section#whale #legend button {
   cursor: hand;
   cursor: pointer;
@@ -1094,7 +1106,7 @@ body #root section#whale #legend button.highlight {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 714, ../sass/global.scss */
+/* line 717, ../sass/global.scss */
 body #root section#whale #legend > div {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1112,23 +1124,23 @@ body #root section#whale #legend > div {
   position: absolute;
   background-color: #ffffff;
 }
-/* line 721, ../sass/global.scss */
+/* line 724, ../sass/global.scss */
 body #root section#whale #legend > div.open {
   display: block;
 }
-/* line 735, ../sass/global.scss */
+/* line 738, ../sass/global.scss */
 body #root section#whale #legend > div img,
 body #root section#whale #legend > div .btn-play {
   width: 222px;
   height: 222px;
 }
-/* line 741, ../sass/global.scss */
+/* line 744, ../sass/global.scss */
 body #root section#whale #legend > div img {
   float: left;
   margin-right: 15px;
   position: relative;
 }
-/* line 747, ../sass/global.scss */
+/* line 750, ../sass/global.scss */
 body #root section#whale #legend > div .btn-play {
   z-index: 2;
   position: absolute;
@@ -1144,7 +1156,7 @@ body #root section#whale #legend > div .btn-play {
   -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
 }
-/* line 759, ../sass/global.scss */
+/* line 762, ../sass/global.scss */
 body #root section#whale #legend > div .btn-close {
   position: absolute;
   top: 0;
@@ -1159,22 +1171,22 @@ body #root section#whale #legend > div .btn-close {
   -webkit-background-size: 15px 15px;
   background-size: 15px 15px;
 }
-/* line 771, ../sass/global.scss */
+/* line 774, ../sass/global.scss */
 body #root section#whale #legend > div h2, body #root section#whale #legend > div > div {
   margin: 15px;
 }
-/* line 775, ../sass/global.scss */
+/* line 778, ../sass/global.scss */
 body #root section#whale #legend > div h2 {
   font-weight: 600;
   font-size: 30px;
   line-height: 1;
 }
-/* line 780, ../sass/global.scss */
+/* line 783, ../sass/global.scss */
 body #root section#whale #legend > div.no-img {
   min-height: initial;
   width: 590px;
 }
-/* line 786, ../sass/global.scss */
+/* line 789, ../sass/global.scss */
 body #root section#whale #legend > div.with-img .copy {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1184,17 +1196,17 @@ body #root section#whale #legend > div.with-img .copy {
   margin-bottom: 15px;
   width: calc(100% - 248px);
 }
-/* line 795, ../sass/global.scss */
+/* line 798, ../sass/global.scss */
 body #root section#whale #legend > div h2,
 body #root section#whale #legend > div p {
   color: #003a70;
 }
-/* line 800, ../sass/global.scss */
+/* line 803, ../sass/global.scss */
 body #root section#whale #legend > div p {
   font-size: 20px;
   line-height: 24px;
 }
-/* line 806, ../sass/global.scss */
+/* line 809, ../sass/global.scss */
 body #root section#whale #legend > div .arrow {
   position: absolute;
   margin: 0;
@@ -1205,54 +1217,54 @@ body #root section#whale #legend > div .arrow {
   -webkit-clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 50% 0%);
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 50% 0%);
 }
-/* line 823, ../sass/global.scss */
+/* line 826, ../sass/global.scss */
 body #root section#whale #legend > div.left .arrow {
   -webkit-clip-path: polygon(100% 0%, 100% 100%, 0% 50%, 100% 0%);
   clip-path: polygon(100% 0%, 100% 100%, 0% 50%, 100% 0%);
   top: 0;
   left: -75px;
 }
-/* line 831, ../sass/global.scss */
+/* line 834, ../sass/global.scss */
 body #root section#whale #legend > div.bottom .arrow {
   -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%);
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%);
   top: 230px;
 }
-/* line 837, ../sass/global.scss */
+/* line 840, ../sass/global.scss */
 body #root section#whale #legend > div.bottom.no-img .arrow {
   top: auto;
 }
-/* line 843, ../sass/global.scss */
+/* line 846, ../sass/global.scss */
 body #root section#whale #legend > div#blowhole .arrow {
   left: 90px;
 }
-/* line 848, ../sass/global.scss */
+/* line 851, ../sass/global.scss */
 body #root section#whale #legend > div#mouth .arrow {
   left: 44px;
 }
-/* line 853, ../sass/global.scss */
+/* line 856, ../sass/global.scss */
 body #root section#whale #legend > div#appetite .arrow {
   top: 155px;
 }
-/* line 858, ../sass/global.scss */
+/* line 861, ../sass/global.scss */
 body #root section#whale #legend > div#heart .arrow {
   left: 88px;
 }
-/* line 863, ../sass/global.scss */
+/* line 866, ../sass/global.scss */
 body #root section#whale #legend > div#size .arrow {
   left: 92px;
 }
-/* line 868, ../sass/global.scss */
+/* line 871, ../sass/global.scss */
 body #root section#whale #legend > div#speed .arrow {
   right: 124px;
 }
-/* line 875, ../sass/global.scss */
+/* line 878, ../sass/global.scss */
 body #root section#whale .legend-frames,
 body #root section#whale #whale-frames {
   z-index: -1;
   position: absolute;
 }
-/* line 881, ../sass/global.scss */
+/* line 884, ../sass/global.scss */
 body #root section#whale .legend-frames {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -1261,19 +1273,19 @@ body #root section#whale .legend-frames {
   -webkit-transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 885, ../sass/global.scss */
+/* line 888, ../sass/global.scss */
 body #root section#whale .legend-frames.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 890, ../sass/global.scss */
+/* line 893, ../sass/global.scss */
 body #root section#whale #bus-frames {
   width: 1400px;
   height: 200px;
   bottom: 150px;
   right: 60px;
 }
-/* line 898, ../sass/global.scss */
+/* line 901, ../sass/global.scss */
 body #root section#whale #bus-frames.active .container {
   -moz-animation: bus 10s steps(300) forwards;
   -webkit-animation: bus 10s steps(300) forwards;
@@ -1282,7 +1294,7 @@ body #root section#whale #bus-frames.active .container {
   -webkit-animation-play-state: running;
   animation-play-state: running;
 }
-/* line 905, ../sass/global.scss */
+/* line 908, ../sass/global.scss */
 body #root section#whale #heart-frames,
 body #root section#whale #whale-frames {
   width: 1920px;
@@ -1290,25 +1302,25 @@ body #root section#whale #whale-frames {
   top: -45px;
   left: 0;
 }
-/* line 913, ../sass/global.scss */
+/* line 916, ../sass/global.scss */
 body #root section#whale #heart-frames .container,
 body #root section#whale #whale-frames .container {
   -moz-animation: whale 30s steps(900) infinite;
   -webkit-animation: whale 30s steps(900) infinite;
   animation: whale 30s steps(900) infinite;
 }
-/* line 918, ../sass/global.scss */
+/* line 921, ../sass/global.scss */
 body #root section#whale #heart-frames.animate .container,
 body #root section#whale #whale-frames.animate .container {
   -moz-animation-play-state: running;
   -webkit-animation-play-state: running;
   animation-play-state: running;
 }
-/* line 924, ../sass/global.scss */
+/* line 927, ../sass/global.scss */
 body #root section#whale #whale-frames {
   z-index: -2;
 }
-/* line 930, ../sass/global.scss */
+/* line 933, ../sass/global.scss */
 body #root #water {
   z-index: 1;
   position: absolute;
@@ -1317,13 +1329,13 @@ body #root #water {
   top: 0;
   left: 0;
 }
-/* line 941, ../sass/global.scss */
+/* line 944, ../sass/global.scss */
 body #root #water.animate .container {
   -moz-animation: water 10s steps(300) infinite;
   -webkit-animation: water 10s steps(300) infinite;
   animation: water 10s steps(300) infinite;
 }
-/* line 949, ../sass/global.scss */
+/* line 952, ../sass/global.scss */
 body #loading {
   position: absolute;
   display: table;
@@ -1334,7 +1346,7 @@ body #loading {
   bottom: 0;
   right: 0;
 }
-/* line 959, ../sass/global.scss */
+/* line 962, ../sass/global.scss */
 body #loading h1 {
   display: table-cell;
   vertical-align: middle;
@@ -1344,38 +1356,38 @@ body #loading h1 {
   color: #ffffff;
   padding-bottom: 30px;
 }
-/* line 970, ../sass/global.scss */
+/* line 973, ../sass/global.scss */
 body #root {
   display: none;
 }
-/* line 975, ../sass/global.scss */
+/* line 978, ../sass/global.scss */
 .loaded body #loading {
   display: none;
 }
-/* line 979, ../sass/global.scss */
+/* line 982, ../sass/global.scss */
 .loaded body #root {
   display: block;
 }
-/* line 985, ../sass/global.scss */
+/* line 988, ../sass/global.scss */
 body .en, body .cn, body .tl, body .es {
   display: none !important;
   -moz-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   animation: fade-in 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 992, ../sass/global.scss */
+/* line 995, ../sass/global.scss */
 html[lang="en"] body .en {
   display: block !important;
 }
-/* line 992, ../sass/global.scss */
+/* line 995, ../sass/global.scss */
 html[lang="cn"] body .cn {
   display: block !important;
 }
-/* line 992, ../sass/global.scss */
+/* line 995, ../sass/global.scss */
 html[lang="tl"] body .tl {
   display: block !important;
 }
-/* line 992, ../sass/global.scss */
+/* line 995, ../sass/global.scss */
 html[lang="es"] body .es {
   display: block !important;
 }
