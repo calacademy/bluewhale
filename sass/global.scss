@@ -795,13 +795,13 @@ body {
 							}
 						}
 
-						h2,
-						p {
+						h2 {
 							color: $blueDark;
 						}
 
 						p {
 							@include body;
+							color: $black;
 						}
 
 						$arrowSize: 75px;

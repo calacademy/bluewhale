@@ -1197,14 +1197,14 @@ body #root section#whale #legend > div.with-img .copy {
   width: calc(100% - 248px);
 }
 /* line 798, ../sass/global.scss */
-body #root section#whale #legend > div h2,
-body #root section#whale #legend > div p {
+body #root section#whale #legend > div h2 {
   color: #003a70;
 }
-/* line 803, ../sass/global.scss */
+/* line 802, ../sass/global.scss */
 body #root section#whale #legend > div p {
   font-size: 20px;
   line-height: 24px;
+  color: #000000;
 }
 /* line 809, ../sass/global.scss */
 body #root section#whale #legend > div .arrow {
