@@ -717,7 +717,7 @@ body {
 					& > div {
 						@include box-sizing(border-box);
 						@include animation(fade-in-from-bottom .6s $easing);
-						@include box-shadow(rgba(#000000, 0.2) 0 0 30px);
+						@include box-shadow(rgba(#000000, 0.15) 0 0 30px);
 
 						display: none;
 
@@ -805,6 +805,7 @@ body {
 						}
 
 						$arrowSize: 75px;
+						$arrowOffset: 30px;
 
 						.arrow {
 							position: absolute;
@@ -813,8 +814,12 @@ body {
 							width: $arrowSize;
 							height: $arrowSize;
 							background-color: rgba(#ffffff, 0.3);
+							z-index: -1;
 
 							@include clip-path(polygon(50% 0%, 100% 100%, 0% 100%, 50% 0%));
+
+							@include animation(slide-in .8s $easing forwards);
+							@include transform(translate3d(0, $arrowOffset, 0));
 						}
 
 						&.top {
@@ -827,6 +832,7 @@ body {
 								@include clip-path(polygon(100% 0%, 100% 100%, 0% 50%, 100% 0%));
 								top: 0;
 								left: -$arrowSize;
+								@include transform(translate3d($arrowOffset, 0, 0));
 							}
 						}
 
@@ -834,6 +840,7 @@ body {
 							.arrow {
 								@include clip-path(polygon(0% 0%, 100% 0%, 50% 100%, 0% 0%));
 								top: $h;
+								@include transform(translate3d(0, -$arrowOffset, 0));
 							}
 						}
 						&.bottom.no-img {

@@ -7,6 +7,12 @@
 	}
 }
 
+@include keyframes(slide-in) {
+	100% {
+		@include transform(translate3d(0, 0, 0));
+	}
+}
+
 @include keyframes(fade-in-from-top) {
 	from {
 		@include transform(translate3d(0, -50px, 0));
