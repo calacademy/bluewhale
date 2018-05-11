@@ -15,7 +15,7 @@
 
 @include keyframes(fade-in-from-top) {
 	from {
-		@include transform(translate3d(0, -50px, 0));
+		@include transform(translate3d(0, -30px, 0));
 		@include opacity(0);
 	}
 	to {
@@ -26,7 +26,7 @@
 
 @include keyframes(fade-in-from-bottom) {
 	from {
-		@include transform(translate3d(0, 50px, 0));
+		@include transform(translate3d(0, 30px, 0));
 		@include opacity(0);
 	}
 	to {
