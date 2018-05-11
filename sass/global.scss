@@ -698,6 +698,10 @@ body {
 						height: 100px;
 						background-color: rgba(#000000, 0);
 					}
+
+					&.selected {
+						pointer-events: none;
+					}
 				}
 
 				.nav.highlight {
