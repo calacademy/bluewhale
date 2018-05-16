@@ -90,7 +90,15 @@ var BlueWhaleTranslate = function (data) {
 	}
 	
 	var _populateCarousel = function () {
-		$.each(data.carousel[0].slides, function (i, obj) {
+		// transpose last two slides to the beginning
+		var arr = data.carousel[0].slides;
+		var offset = 2;
+
+		var end = arr.slice(offset * -1);
+		var portion = arr.slice(0, arr.length - offset);
+		
+		// create slides
+		$.each(end.concat(portion), function (i, obj) {
 			var slide = $('<li />');
 
 			// img
