@@ -31,12 +31,13 @@ var BlueWhaleMedia = function () {
 	}
 
 	this.playVideo = function (src, lg) {
-		var video = $('<video />');
+		var video = $('<video />', {
+			muted: '1',
+			src: src
+		});
 		
 		video.off('ended');
 		video.on('ended', _onVideoEnded);
-
-		video.attr('src', src);
 
 		var progress = $('<div />');
 		progress.addClass('progress-indicator');
