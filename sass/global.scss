@@ -227,7 +227,7 @@ body {
 			width: 100%;	
 			text-align: center;
 			@include h3;
-			@include text-shadow(rgba(#000000, 0.5) 0 0 20px);
+			@include text-shadow(rgba(#000000, 0.75) 0 0 15px);
 
 			@include transition(
 				opacity .6s $easing .2s
