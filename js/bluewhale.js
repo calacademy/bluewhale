@@ -7,7 +7,7 @@ var BlueWhale = function () {
 	var _selectEvent = Modernizr.touch ? 'touchend' : 'click';
 	var _overEvent = Modernizr.touch ? 'touchstart' : 'mouseover';
 	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
-	var _media = new BlueWhaleMedia();
+	var _media = new Media();
 	var _currentSlide = 0;
 	var _lastSection;
 	var _translate;
@@ -91,8 +91,8 @@ var BlueWhale = function () {
 	}
 
 	var _onPlay = function () {
-		var parent = $(this).parent();
-		_onNav('media-overlay', parent.data('src'));
+		_media.setNavSource($(this).closest('section').attr('id'));
+		_onNav('media-overlay', $(this).parent().data('src'));
 
 		return false;
 	}
@@ -169,19 +169,40 @@ var BlueWhale = function () {
 		el.on(_outEvent, _onOut);
 	}
 
+	var _toggleCloseButton = function (section) {
+		if ($('#' + section).hasClass('no-close')) {
+			$('html').removeClass('show-close');
+		} else {
+			$('html').addClass('show-close');
+		}
+	}
+
 	var _onButtonNav = function () {
 		_onNav($(this).data('target'));
 		return false;
 	}
 
 	var _onNav = function (section, src) {
-		$('section').removeClass('open');
-		$('#' + section).addClass('open');
-		$('html').addClass('show-close');
+		var newSection = $('#' + section);
+		var isOverlay = newSection.hasClass('overlay');
+
+		if (isOverlay) {
+			// pause any media
+			if (section != 'media-overlay') {
+				_media.pause();
+			}
+		} else {
+			// close everything
+			$('section').removeClass('open');
+		}
+
+		newSection.addClass('open');
 		$('html').removeClass('attract');
 		$('#attract video').get(0).pause();
 		$('#btn-credits').removeClass('highlight');
 		
+		_toggleCloseButton(section);
+
 		_lastSection = $('html').attr('active-section');
 		$('html').attr('active-section', section);
 
@@ -194,7 +215,6 @@ var BlueWhale = function () {
 				_onLegendClose();
 				
 				$('.cta').removeClass('hide');
-				$('html').removeClass('show-close');
 				$('html').addClass('attract');
 
 				$('#attract video').get(0).play();
@@ -210,30 +230,44 @@ var BlueWhale = function () {
 				_media.playVideo(src);
 				break;
 			case 'whale':
-				$('html').removeClass('show-close');
 				_initWhaleTouchPoints();
 				break;
+		}
+	}
+
+	var _onOverlayClose = function () {
+		var section = $('#' + $('html').attr('active-section'));
+
+		// hide
+		section.removeClass('open');
+		$('html').attr('active-section', _lastSection);
+
+		_toggleCloseButton(_lastSection);
+
+		if (_lastSection == 'media-overlay') {
+			// previously viewing media
+			_media.play();
+			_lastSection = _media.getNavSource();
+		} else {
+			_media.destroy();
 		}
 	}
 
 	var _onClose = function () {
 		if (_isSliding()) return false;
 
-		$('html').removeClass('show-close');
-		$('section').removeClass('open');
-		_media.destroy();
+		// closing an overlay
+		var section = $('#' + $('html').attr('active-section'));
 
-		// default to home
-		var targetSection = 'whale';
-		
-		// if closing credits, go to last open section
-		if ($('html').attr('active-section') == 'credits') {
-			if (_lastSection) {
-				targetSection = _lastSection;
-			}
+		if (section.hasClass('overlay')) {
+			_onOverlayClose();
+			return;
 		}
 
-		_onNav(targetSection);
+		$('section').removeClass('open');		
+		_media.destroy();
+
+		_onNav('whale');
 		
 		return false;
 	}

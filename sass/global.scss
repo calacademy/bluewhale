@@ -245,6 +245,9 @@ body {
 			}
 
 			&#credits {
+				z-index: 5;
+				@include animation-duration(.5s);
+
 				background-color: $black;
 				position: absolute;
 				top: $translationUIHeight;
