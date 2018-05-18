@@ -299,7 +299,8 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
-		_currentSlide = newIndex;
+		_currentSlide = (typeof(newIndex) == 'undefined') ? 0 : newIndex;
+
 		$('html').removeClass('carousel-edge');
 
 		var mid = $('.mid-slide');
