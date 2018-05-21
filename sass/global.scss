@@ -82,74 +82,7 @@ body {
 		margin-left: auto;
 		margin-right: auto;
 
-		nav {
-			z-index: 999;
-		    position: relative;
-
-		    background-color: $black;
-		    width: 100%;
-		    overflow: hidden;
-		    clear: both;
-		    
-		    &, li, div {
-		    	@include box-sizing(border-box);
-		    	height: $translationUIHeight;
-		    }
-
-		    #btn-credits,
-		    li {
-		    	@include transition(
-					opacity .6s $easing
-				);
-
-				@include opacity(1);
-				
-				html[active-section="credits"] & {
-					@include opacity(0);
-					pointer-events: none;
-				}
-
-		    	@include buttony;
-		    	float: right;
-		    	padding-left: 60px;
-			    padding-right: 60px;
-			    padding-top: 14px;
-		    }
-
-		    #btn-credits {
-		    	color: #676767;
-
-		    	&.highlight {
-		    		color: #ffffff;
-		    		@include opacity(1);
-		    	}
-		    }
-
-			#languages {
-			    li {
-			    	border-right: 1px solid rgba(#ffffff, .6);
-
-			    	font-size: 17px;
-				    line-height: 1;
-				    letter-spacing: 1.25px;
-				    text-transform: uppercase;
-
-				    color: $blue;
-				    font-weight: $medium;
-				    font-family: 'Whitney Condensed';
-
-			    	&#cn {
-			    		font-family: 'HanSans';
-			    	}
-
-			    	&.active {
-						font-weight: $semibold;
-	        			color: #ffffff;
-	        			pointer-events: none;
-			    	}
-			    }
-			}
-		}
+		@import "nav";
 
 		#close {
 			@include box-sizing(border-box);

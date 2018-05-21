@@ -200,7 +200,6 @@ var BlueWhale = function () {
 		newSection.addClass('open');
 		$('html').removeClass('attract');
 		$('#attract video').get(0).pause();
-		$('#btn-credits').removeClass('highlight');
 		
 		_toggleCloseButton(section);
 
@@ -219,9 +218,6 @@ var BlueWhale = function () {
 				$('html').addClass('attract');
 
 				$('#attract video').get(0).play();
-				break;
-			case 'credits':
-				$('#btn-credits').addClass('highlight');
 				break;
 			case 'slideshow':
 				_onLegendClose();
@@ -429,7 +425,7 @@ var BlueWhale = function () {
 	}
 
 	var _initNav = function () {
-		_addHighlightInteraction($('#close, .nav'));
+		_addHighlightInteraction($('nav span, #close, .nav'));
 		$('.with-point').prepend('<div class="point"><div /></div>');
 
 		$('#close').on(_selectEvent, _onClose);
@@ -496,6 +492,8 @@ var BlueWhale = function () {
 		$('.en-sample').first().clone().addClass('semibold').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('semibold').appendTo('#preload');
+
+		$('#languages li, #btn-credits').contents().wrap('<span />');
 
 		// animations
 		_animations = {
