@@ -194,6 +194,7 @@ var BlueWhale = function () {
 		} else {
 			// close everything
 			$('section').removeClass('open');
+			_media.destroy();
 		}
 
 		newSection.addClass('open');

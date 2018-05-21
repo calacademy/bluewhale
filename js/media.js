@@ -2,9 +2,10 @@ var Media = function () {
 	var _container;
 	var _prog;
 	var _navSrc;
+	var _inst = this;
 
 	var _onVideoEnded = function (e) {
-		$('html').removeClass('video-playing');
+		_inst.destroy();
 		$(document).trigger('videoended');
 	}
 
