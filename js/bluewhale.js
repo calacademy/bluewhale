@@ -420,7 +420,19 @@ var BlueWhale = function () {
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
     		console.log('active');
-    		_onNav('whale');
+    		
+    		$('#attract').off();
+
+    		$('#attract').on('transitionend', function () {
+    			$(this).off();
+    			$(this).removeClass('fade-out');
+    			_onNav('whale');
+    		});
+
+    		_initWhaleTouchPoints();
+
+    		$('#whale').addClass('open');
+    		$('#attract').addClass('fade-out');
     	});
 	}
 

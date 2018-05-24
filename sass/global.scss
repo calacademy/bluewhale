@@ -134,7 +134,7 @@ body {
 
 		nav {
 			position: relative;
-			z-index: 3;
+			z-index: 6;
 		}
 
 		.frame-animation {
@@ -242,6 +242,18 @@ body {
 			}
 
 			&#attract {
+				z-index: 4;
+
+				@include transition(
+					opacity .8s $easing
+				);
+
+				@include opacity(1);
+
+				&.fade-out {
+					@include opacity(0);
+				}
+
 				header {
 					position: absolute;
 					top: 30px;
