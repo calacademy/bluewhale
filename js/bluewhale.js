@@ -75,6 +75,7 @@ var BlueWhale = function () {
 	}
 
 	var _onLegendClose = function () {
+		$('#points > div').removeClass('highlight');
 		$('#points > div').removeClass('selected');
 		$('#legend > div').removeClass('open');
 
@@ -142,7 +143,14 @@ var BlueWhale = function () {
 		} else if (window.location.hash == '#draglegend') {
 			_configPositions($('#legend > div'));
 		} else {
-			$('#points > div').off(_selectEvent);
+			$('#points > div').off();
+
+			if (Modernizr.touch) {
+				$('#points > div').on(_overEvent, _onOver);	
+			} else {
+				_addHighlightInteraction($('#points > div'));
+			}
+
 			$('#points > div').on(_selectEvent, _onPoint);
 		}
 

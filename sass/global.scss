@@ -634,11 +634,16 @@ body {
 					@include opacity(1);
 					@include transition(opacity .6s $easing);
 
-					&.selected {
+					&.selected,
+					&.highlight {
 						div {
 							@include transform(scale3d(1, 1, 1));
 							background-color: $blueDark;
 						}
+					}
+
+					&.selected {
+						pointer-events: none;
 
 						&.hide-on-select {
 							@include opacity(0);
