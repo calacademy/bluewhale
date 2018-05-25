@@ -442,8 +442,7 @@ var BlueWhale = function () {
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
     		console.log('active');
-    		console.log($('html').attr('active-section'));
-
+    		
     		$('#attract').off();
 
     		$('#attract').on('transitionend', function () {
