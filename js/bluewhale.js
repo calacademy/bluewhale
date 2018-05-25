@@ -409,6 +409,7 @@ var BlueWhale = function () {
 			onSlideBefore: _onSlideBefore,
 			onSlideAfter: _onSlideAfter,
 			touchEnabled: Modernizr.touch,
+			oneToOneTouch: false,
 			easing: 'cubic-bezier(.215, .61, .355, 1)',
 			slideWidth: _slideWidth
 		});
