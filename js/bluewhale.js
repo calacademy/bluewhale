@@ -190,6 +190,11 @@ var BlueWhale = function () {
 		return false;
 	}
 
+	var _stopAttract = function () {
+		$('html').removeClass('attract');
+		$('#attract video').get(0).pause();
+	}
+
 	var _onNav = function (section, src) {
 		var newSection = $('#' + section);
 		var isOverlay = newSection.hasClass('overlay');
@@ -206,9 +211,8 @@ var BlueWhale = function () {
 		}
 
 		newSection.addClass('open');
-		$('html').removeClass('attract');
-		$('#attract video').get(0).pause();
 		
+		_stopAttract();
 		_toggleCloseButton(section);
 
 		_lastSection = $('html').attr('active-section');
@@ -242,6 +246,9 @@ var BlueWhale = function () {
 
 	var _onOverlayClose = function () {
 		var section = $('#' + $('html').attr('active-section'));
+
+		$('#attract').removeClass('open');
+		_stopAttract();
 
 		// hide
 		section.removeClass('open');
@@ -428,13 +435,20 @@ var BlueWhale = function () {
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
     		console.log('active');
-    		
+    		console.log($('html').attr('active-section'));
+
     		$('#attract').off();
 
     		$('#attract').on('transitionend', function () {
     			$(this).off();
     			$(this).removeClass('fade-out');
-    			_onNav('whale');
+
+    			if ($('html').attr('active-section') == 'credits') {
+    				_lastSection = 'whale';
+    				_toggleCloseButton('credits');
+    			} else {
+    				_onNav('whale');
+    			}
     		});
 
     		_initWhaleTouchPoints();

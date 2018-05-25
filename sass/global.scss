@@ -119,6 +119,10 @@ body {
 				right: auto;
 			}
 
+			html[active-section="credits"] & {
+				top: $translationUIHeight;
+			}
+
 			.show-close & {
 				@include transition(
 					opacity .4s $easing
