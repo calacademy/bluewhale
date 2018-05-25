@@ -59,7 +59,7 @@ var BlueWhale = function () {
 	}
 
 	var _onPoint = function () {
-		_onLegendClose();
+		_onLegendClose($(this));
 		$('#cta-spot').addClass('hide');
 
 		$(this).addClass('selected');
@@ -74,9 +74,16 @@ var BlueWhale = function () {
 		}
 	}
 
-	var _onLegendClose = function () {
-		$('#points > div').removeClass('highlight');
-		$('#points > div').removeClass('selected');
+	var _onLegendClose = function (el) {
+		var points = $('#points > div');
+
+		if (typeof(el) != 'undefined') {
+			points = $('#points > div').not(el);
+		}
+
+		points.removeClass('highlight');
+		points.removeClass('selected');
+
 		$('#legend > div').removeClass('open');
 
 		// capture current bus frame
