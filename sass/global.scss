@@ -468,6 +468,18 @@ body {
 							}
 						}
 
+						.swiping & {
+							.container {
+								@include opacity(.25);
+								@include transform(scale3d(1, 1, 1) translateX(0));
+
+								& > div,
+								&:after {
+									@include opacity(0);
+								}
+							}
+						}
+
 						.carousel-edge & {
 							.container,
 							.container > div,

@@ -86,6 +86,8 @@
     onSliderLoad: function() { return true; },
     onSlideBefore: function() { return true; },
     onSlideAfter: function() { return true; },
+    onTouchMove: function() { return true; },
+    onTouchEnd: function() { return true; },
     onSlideNext: function() { return true; },
     onSlidePrev: function() { return true; },
     onSliderResize: function() { return true; },
@@ -1224,6 +1226,9 @@
           value = slider.touch.originalPos.top + change;
         }
 
+        // grotter
+        slider.settings.onTouchMove.call(el, e, change, value);
+        
         setPositionProperty(value, 'reset', 0);
       }
     };
@@ -1246,6 +1251,8 @@
       if (touches && touches.length > 1) return false;
       if (e.originalEvent.type == 'pointerup') return false;
       //
+
+      slider.settings.onTouchEnd.call(el, e);
 
       var orig    = e.originalEvent,
       touchPoints = (typeof orig.changedTouches !== 'undefined') ? orig.changedTouches : [orig],

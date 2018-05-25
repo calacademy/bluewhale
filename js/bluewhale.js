@@ -317,10 +317,21 @@ var BlueWhale = function () {
 		mid.next().next().addClass('slide-next-next');
 	}
 
+	var _onCarouselSwipe = function (e, change, value) {
+		if (Math.abs(change) > 150) {
+			$('html').addClass('swiping');
+		}
+	}
+
+	var _onCarouselSwipeEnd = function (e) {
+		$('html').removeClass('swiping');
+	}
+
 	var _onSlideBefore = function (slide, oldIndex, newIndex) {
 		_currentSlide = (typeof(newIndex) == 'undefined') ? 0 : newIndex;
 
 		$('html').removeClass('carousel-edge');
+		$('html').removeClass('swiping');
 
 		var mid = $('.mid-slide');
 		_removeSlideClasses();
@@ -380,7 +391,7 @@ var BlueWhale = function () {
 	}
 
 	var _initCarousel = function () {
-		// $('html').removeClass('carousel-edge');
+		$('html').removeClass('swiping');
 
 		if (_carousel) {
 			_carousel.jumpToSlide(_currentSlide);
@@ -408,8 +419,9 @@ var BlueWhale = function () {
 			moveSlides: 1,
 			onSlideBefore: _onSlideBefore,
 			onSlideAfter: _onSlideAfter,
+			onTouchMove: _onCarouselSwipe,
+			onTouchEnd: _onCarouselSwipeEnd,
 			touchEnabled: Modernizr.touch,
-			oneToOneTouch: false,
 			easing: 'cubic-bezier(.215, .61, .355, 1)',
 			slideWidth: _slideWidth
 		});
