@@ -29,6 +29,9 @@ body {
 		position: absolute;
 		left: -9999999px;
 
+		.narrow {
+			font-family: 'Whitney Narrow' !important;
+		}
 		.medium {
 			font-weight: $medium;
 		}
@@ -470,7 +473,7 @@ body {
 
 						.swiping & {
 							.container {
-								@include opacity(.25);
+								@include opacity(.5);
 								@include transform(scale3d(1, 1, 1) translateX(0));
 
 								& > div,

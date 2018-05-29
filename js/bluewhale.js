@@ -541,6 +541,7 @@ var BlueWhale = function () {
 		$(window).on('load', _onLoad);
 
 		// glyphs
+		$('.en-sample').first().clone().addClass('narrow').appendTo('#preload');
 		$('.en-sample').first().clone().addClass('medium').appendTo('#preload');
 		$('.en-sample').first().clone().addClass('semibold').appendTo('#preload');
 		$('.cn-sample').first().clone().addClass('medium').appendTo('#preload');
