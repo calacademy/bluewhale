@@ -205,6 +205,24 @@ var BlueWhale = function () {
 		}
 	}
 
+	var _initAttract = function () {
+		_currentSlide = 0;
+		_lastSection = null;
+
+		if (_translate) {
+			_translate.reset();
+		}
+
+		_onLegendClose();
+		
+		$('.cta').removeClass('hide');
+		$('html').addClass('attract');
+
+		if ($('#attract video').length == 1) {
+			$('#attract video').get(0).play();	
+		}
+	}
+
 	var _onNav = function (section, src) {
 		var newSection = $('#' + section);
 		var isOverlay = newSection.hasClass('overlay');
@@ -230,18 +248,7 @@ var BlueWhale = function () {
 
 		switch (section) {
 			case 'attract':
-				if (_translate) {
-					_translate.reset();
-				}
-
-				_onLegendClose();
-				
-				$('.cta').removeClass('hide');
-				$('html').addClass('attract');
-
-				if ($('#attract video').length == 1) {
-					$('#attract video').get(0).play();	
-				}
+				_initAttract();
 				break;
 			case 'slideshow':
 				_onLegendClose();
@@ -453,14 +460,20 @@ var BlueWhale = function () {
 			
 			console.log('idle');
 			
-			_currentSlide = 0;
-			_lastSection = null;
-			_onNav('attract');
+			_initAttract();
+
+			if (BLUEWHALE_CONFIG.withAttract) {
+				_onNav('attract');
+			} else {
+				_onNav('whale');
+			}
+			
     	});
 
     	$(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
     		console.log('active');
-    		
+    		if (!BLUEWHALE_CONFIG.withAttract) return;
+
     		$('#attract').off();
 
     		$('#attract').on('transitionend', function () {
@@ -543,7 +556,7 @@ var BlueWhale = function () {
 		$(document).on('bluewhalemodel.success', _onData);
 		
 		if (!BLUEWHALE_CONFIG.withAttract) {
-			$('#attract video').remove();
+			$('#attract').remove();
 		}
 
 		$(document).on('imgerror', _onError);
