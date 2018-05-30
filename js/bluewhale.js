@@ -199,7 +199,10 @@ var BlueWhale = function () {
 
 	var _stopAttract = function () {
 		$('html').removeClass('attract');
-		$('#attract video').get(0).pause();
+		
+		if ($('#attract video').length == 1) {
+			$('#attract video').get(0).pause();	
+		}
 	}
 
 	var _onNav = function (section, src) {
@@ -236,7 +239,9 @@ var BlueWhale = function () {
 				$('.cta').removeClass('hide');
 				$('html').addClass('attract');
 
-				$('#attract video').get(0).play();
+				if ($('#attract video').length == 1) {
+					$('#attract video').get(0).play();	
+				}
 				break;
 			case 'slideshow':
 				_onLegendClose();
@@ -537,6 +542,10 @@ var BlueWhale = function () {
 		$(document).on('bluewhalemodel.error', _onError);
 		$(document).on('bluewhalemodel.success', _onData);
 		
+		if (!BLUEWHALE_CONFIG.withAttract) {
+			$('#attract video').remove();
+		}
+
 		$(document).on('imgerror', _onError);
 		$(window).on('load', _onLoad);
 
