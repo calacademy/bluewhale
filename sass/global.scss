@@ -563,20 +563,25 @@ body {
 
 				$padding: 60px;
 
-				h1 {
+				header {
 					position: absolute;
-					@include h1(false, true);
-					margin-left: $padding;
+					top: 7px;
+					margin-left: $padding - 9px;
 
-					.tl {
-						width: 600px;
-						line-height: 58px;
-					}	
+					h1 {
+						@include h1(false, true);	
+					}
+					h2 {
+						@include h3;
+						font-weight: $semibold;
+						margin-top: -8px;
+						margin-left: -1px;
+					}
 				}
 
 				.nav {
 					position: absolute;
-					left: $padding;
+					left: $padding - 9px;
 					bottom: $padding * 2;
 
 					color: #ffffff;
