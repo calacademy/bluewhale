@@ -285,6 +285,7 @@ var BlueWhale = function () {
 	}
 
 	var _onClose = function () {
+		if ($('html').hasClass('swiping')) return false;
 		if (_isSliding()) return false;
 
 		// closing an overlay
