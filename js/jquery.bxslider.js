@@ -1513,9 +1513,7 @@
           setPositionProperty(value, 'slide', slider.settings.speed);
         }
 
-        // grotter
-        // why is this immediately getting set to false?
-        // slider.working = false;
+        slider.working = false;
       }
       if (slider.settings.ariaHidden) { applyAriaHiddenAttributes(slider.active.index * getMoveBy()); }
     };
