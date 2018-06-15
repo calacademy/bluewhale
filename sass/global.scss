@@ -667,9 +667,8 @@ body {
 					}
 
 					&.selected {
-						pointer-events: none;
-
 						&.hide-on-select {
+							pointer-events: none;
 							@include opacity(0);
 						}
 					}
@@ -687,10 +686,6 @@ body {
 						width: 100px;
 						height: 100px;
 						background-color: rgba(#000000, 0);
-					}
-
-					&.selected {
-						pointer-events: none;
 					}
 				}
 

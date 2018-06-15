@@ -62,15 +62,22 @@ var BlueWhale = function () {
 		_onLegendClose($(this));
 		$('#cta-spot').addClass('hide');
 
-		$(this).addClass('selected');
-		$('#legend').find('#' + $(this).data('target')).addClass('open');
+		var legend = $('#legend').find('#' + $(this).data('target'));
+		$(this).toggleClass('selected');
 
-		if ($(this).data('frames')) {
-			// reset bus animation to first frame
-			$('#bus-frames .container').css('top', '0');
+		if ($(this).hasClass('selected')) {
+			legend.addClass('open');
 
-			// add animation
-			$('#' + $(this).data('frames')).addClass('active');
+			if ($(this).data('frames')) {
+				// reset bus animation to first frame
+				$('#bus-frames .container').css('top', '0');
+
+				// add animation
+				$('#' + $(this).data('frames')).addClass('active');
+			}
+		} else {
+			$(this).removeClass('highlight');
+			legend.removeClass('open');
 		}
 	}
 
