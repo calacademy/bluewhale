@@ -9,11 +9,13 @@ var BlueWhale = function () {
 	var _outEvent = Modernizr.touch ? 'touchend' : 'mouseout click';
 	var _media = new Media();
 	var _currentSlide = 0;
+	var _totalSlides;
 	var _lastSection;
 	var _translate;
 	var _carousel;
 	var _data;
 	var _animations;
+	var _attractTransitionTimeout;
 
 	var _configPositions = function (els) {
 		els.show();
@@ -43,17 +45,10 @@ var BlueWhale = function () {
 		});
 	}
 
-	var _isSliding = function () {
-		if (_carousel) {
-			if (_carousel.isWorking()) return true;	
-		}
-
-		return false;	
-	}
-
 	var _onOver = function () {
 		$(this).addClass('highlight');
 	}
+
 	var _onOut = function () {
 		$(this).removeClass('highlight');
 	}
@@ -221,6 +216,7 @@ var BlueWhale = function () {
 		}
 
 		_onLegendClose();
+		_destroySliders();
 		
 		$('.cta').removeClass('hide');
 		$('html').addClass('attract');
@@ -292,9 +288,6 @@ var BlueWhale = function () {
 	}
 
 	var _onClose = function () {
-		if ($('html').hasClass('swiping')) return false;
-		if (_isSliding()) return false;
-
 		// closing an overlay
 		var section = $('#' + $('html').attr('active-section'));
 
@@ -303,8 +296,10 @@ var BlueWhale = function () {
 			return;
 		}
 
-		$('section').removeClass('open');		
+		$('section').removeClass('open');
+
 		_media.destroy();
+		_destroySliders();
 
 		_onNav('whale');
 		
@@ -356,9 +351,8 @@ var BlueWhale = function () {
 		var mid = $('.mid-slide');
 		_removeSlideClasses();
 
-		var total = _carousel.getSlideCount();
-		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (total - 1));
-		var isNextFromLast = (oldIndex === (total - 1) && newIndex === 0);
+		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (_totalSlides - 1));
+		var isNextFromLast = (oldIndex === (_totalSlides - 1) && newIndex === 0);
 
 		// previous from first slide
 		if (isPreviousFromFirst) {
@@ -374,7 +368,7 @@ var BlueWhale = function () {
 
 		// normal
 		if (!slide) {
-			slide = $('.slides > li').not('.bx-clone').eq(0);
+			slide = $('.slides > li').not('.bx-clone').eq(newIndex);
 		}
 
 		var i = _getMidSlideIndex(slide.index());
@@ -383,9 +377,8 @@ var BlueWhale = function () {
 	}
 
 	var _onSlideAfter = function (slide, oldIndex, newIndex) {
-		var total = _carousel.getSlideCount();
-		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (total - 1));
-		var isNextFromLast = (oldIndex === (total - 1) && newIndex === 0);
+		var isPreviousFromFirst = (oldIndex === 0 && newIndex === (_totalSlides - 1));
+		var isNextFromLast = (oldIndex === (_totalSlides - 1) && newIndex === 0);
 
 		if (isPreviousFromFirst || isNextFromLast) {
 			$('html').addClass('carousel-edge');
@@ -410,15 +403,24 @@ var BlueWhale = function () {
 		}
 	}
 
+	var _destroySliders = function () {
+		$('.slides').each(function () {
+			var slider = $('#' + $(this).attr('id'));
+
+			if (slider.data('bxSlider')) {
+				slider.data('bxSlider').destroySlider();
+			}
+		});
+		
+		_removeSlideClasses();
+		$('html').removeClass('swiping');
+	}
+
 	var _initCarousel = function () {
 		$('html').removeClass('swiping');
+		_totalSlides = $('.slides > li').length;
 
-		if (_carousel) {
-			_carousel.jumpToSlide(_currentSlide);
-			return;
-		}
-
-		$('.slides > li').each(function () {
+		$('.slides > li').not('.processed').each(function () {
 			$(this).attr('index', $(this).index());
 
 			var container = $('<div />');
@@ -426,9 +428,10 @@ var BlueWhale = function () {
 			container.on(_selectEvent, _onSlideClick);
 
 			$(this).wrapInner(container);
+			$(this).addClass('processed');
 		});
 
-		_carousel = $('.slides').bxSlider({
+		_carousel = $('#carousel').bxSlider({
 			speed: 600,
 			controls: true,
 			keyboardEnabled: true,
@@ -443,11 +446,12 @@ var BlueWhale = function () {
 			onTouchEnd: _onCarouselSwipeEnd,
 			touchEnabled: Modernizr.touch,
 			easing: 'cubic-bezier(.215, .61, .355, 1)',
-			slideWidth: _slideWidth
+			slideWidth: _slideWidth,
+			startSlide: _currentSlide
 		});
 
 		_addHighlightInteraction($('.bx-controls-direction a'));
-		_onSlideBefore();
+		_onSlideBefore(null, null, _currentSlide);
 	}
 
 	var _initTranslate = function () {
@@ -483,24 +487,31 @@ var BlueWhale = function () {
     		if (!BLUEWHALE_CONFIG.withAttract) return;
 
     		$('#attract').off();
+    		$('#attract').on('transitionend', _onAttractTransitionEnd);
 
-    		$('#attract').on('transitionend', function () {
-    			$(this).off();
-    			$(this).removeClass('fade-out');
-
-    			if ($('html').attr('active-section') == 'credits') {
-    				_lastSection = 'whale';
-    				_toggleCloseButton('credits');
-    			} else {
-    				_onNav('whale');
-    			}
-    		});
+    		// fallback timer if transitionend event doesn't fire
+    		if (_attractTransitionTimeout) clearTimeout(_attractTransitionTimeout);
+    		_attractTransitionTimeout = setTimeout(_onAttractTransitionEnd, 1000);
 
     		_initWhaleTouchPoints();
 
     		$('#whale').addClass('open');
     		$('#attract').addClass('fade-out');
     	});
+	}
+
+	var _onAttractTransitionEnd = function () {
+		if (_attractTransitionTimeout) clearTimeout(_attractTransitionTimeout);
+
+		$('#attract').off();
+		$('#attract').removeClass('fade-out');
+
+		if ($('html').attr('active-section') == 'credits') {
+			_lastSection = 'whale';
+			_toggleCloseButton('credits');
+		} else {
+			_onNav('whale');
+		}
 	}
 
 	var _initNav = function () {
