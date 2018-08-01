@@ -461,7 +461,7 @@ var BlueWhale = function () {
 	var _initIdleTimer = function () {
 		$(document).idleTimer({
 			timeout: BLUEWHALE_CONFIG.idleSeconds * 1000,
-			events: 'keydown mousedown touchstart'
+			events: 'keydown mousedown mousemove touchstart touchmove touchend click'
 		});
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
