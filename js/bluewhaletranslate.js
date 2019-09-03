@@ -155,6 +155,11 @@ var BlueWhaleTranslate = function (data) {
 
 	var _getSrc = function (obj) {
 		var file_path = data.hotspots[0].file_path;
+
+		if (BLUEWHALE_CONFIG.isLocal) {
+			file_path = 'assets/';
+		}
+
 		return obj.uri.replace('public://', file_path);
 	}
 

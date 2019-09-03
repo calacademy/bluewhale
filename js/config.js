@@ -1,5 +1,5 @@
 var BLUEWHALE_CONFIG = {
-	isDev: ($.trim(window.location.hash) == '#dev'),
+	isLocal: true,
 	idleSeconds: 45,
 	withAttract: true,
 	legend: {"appetite":{"left":"51px","top":"444px"},"mouth":{"left":"440px","top":"626px"},"blowhole":{"left":"625px","top":"23px"},"heart":{"left":"831px","top":"56px"},"size":{"left":"1175px","top":"58px"},"speed":{"left":"1045px","top":"660px"}},

@@ -522,7 +522,9 @@ var BlueWhale = function () {
 		$('.nav').on(_selectEvent, _onButtonNav);
 	}
 
-	var _onError = function () {
+	var _onError = function (e) {
+		console.log(e);
+
 		$(document).off('imgerror');
 		$(window).off('load');
 		$(document).off('bluewhalemodel');

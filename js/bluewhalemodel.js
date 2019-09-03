@@ -14,7 +14,8 @@ var BlueWhaleModel = function () {
 		$(document).trigger('bluewhalemodel.success', [_data]);
 	}
 
-	var _onError = function () {
+	var _onError = function (e) {
+		console.log(e);
 		$(document).trigger('bluewhalemodel.error');
 	}
 
@@ -49,11 +50,11 @@ var BlueWhaleModel = function () {
 
 	this.initialize = function () {
 		$.each(_data, function (key, val) {
-			var url = _endpoint + val + '.jsonp';
-			
-			if (BLUEWHALE_CONFIG.isDev) {
-				url = 'jsonp/' + key + '.jsonp';
+			if (BLUEWHALE_CONFIG.isLocal) {
+				_endpoint = 'jsonp/';
 			}
+
+			var url = _endpoint + val + '.jsonp';
 
 			_requestJsonp(url, function (data) {
 				_onData(key, data);
