@@ -27,6 +27,15 @@
 
     <script>
 
+      // fix for touch detection on some devices that don't support Modernizr.touch
+      var isTouch = 'maxTouchPoints' in navigator && navigator.maxTouchPoints > 0;
+
+      if (isTouch && !Modernizr.touch) {
+        Modernizr.touch = true;
+        $('html').addClass('touch');
+        $('html').removeClass('no-touch');
+      }
+
       $(document).ready(function () {
         var foo = new BlueWhale();			
       });
